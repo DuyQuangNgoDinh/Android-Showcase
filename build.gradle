@@ -13,7 +13,8 @@ buildscript {
         appVersionCode = 1
 
         // 3rd parties
-
+        material_version = '1.0.0'
+        nav_version = '2.1.0'
     }
     repositories {
         google()
