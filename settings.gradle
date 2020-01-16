@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':authenticate'
 rootProject.name='Android Showcase'

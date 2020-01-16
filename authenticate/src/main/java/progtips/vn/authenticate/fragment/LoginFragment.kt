@@ -1,4 +1,4 @@
-package progtips.vn.androidshowcase
+package progtips.vn.authenticate.fragment
 
 
 import android.os.Bundle
@@ -7,17 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
+import progtips.vn.authenticate.R
+
 /**
  * A simple [Fragment] subclass.
  */
-class CatalogueFragment : Fragment() {
+class LoginFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_catalogue, container, false)
+        return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
 

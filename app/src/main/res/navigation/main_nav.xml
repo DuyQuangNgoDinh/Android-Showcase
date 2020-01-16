@@ -7,7 +7,15 @@
 
     <fragment
         android:id="@+id/catalogueFragment"
-        android:name="progtips.vn.androidshowcase.CatalogueFragment"
+        android:name="progtips.vn.androidshowcase.fragment.CatalogueFragment"
         android:label="Catalogue"
-        tools:layout="@layout/fragment_catalogue" />
+        tools:layout="@layout/fragment_catalogue" >
+        <action
+            android:id="@+id/action_catalogueFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="progtips.vn.authenticate.fragment.LoginFragment"
+        android:label="LoginFragment" />
 </navigation>

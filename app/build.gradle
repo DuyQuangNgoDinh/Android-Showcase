@@ -5,6 +5,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('/Users/nddquang/AndroidShowcase/app/keystore/debug_key')
+            storePassword 'jnn17051995'
+            keyAlias = 'dbkey'
+            keyPassword 'jnn17051995'
+        }
+    }
     compileSdkVersion compileSdk
     buildToolsVersion "29.0.2"
     defaultConfig {
@@ -36,6 +44,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation project(':authenticate')
 
     // Material Design
     implementation "com.google.android.material:material:$material_version"
