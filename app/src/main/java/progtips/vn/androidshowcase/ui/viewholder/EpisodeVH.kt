@@ -9,7 +9,7 @@ import progtips.vn.androidshowcase.R
 class EpisodeVH(
     itemView: View
 ): RecyclerView.ViewHolder(itemView) {
-    private val tvFuncName by lazy { itemView.findViewById<TextView>(R.id.tv_funcName) }
+    private val tvFuncName by lazy { itemView.findViewById<TextView>(R.id.tvFuncName) }
 
     fun bind(item: String) {
         itemView.setOnClickListener {
