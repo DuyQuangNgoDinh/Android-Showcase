@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/content_padding"
+    android:padding="@dimen/screen_padding"
     android:orientation="vertical"
     tools:context=".fragment.CatalogueFragment">
 
@@ -14,7 +14,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_func"
-        android:layout_marginTop="@dimen/content_padding"
+        android:layout_marginTop="@dimen/screen_padding"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

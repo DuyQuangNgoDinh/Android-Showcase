@@ -1,2 +1,2 @@
-include ':app', ':authenticate'
+include ':app', ':authenticate', ':sharedresource'
 rootProject.name='Android Showcase'

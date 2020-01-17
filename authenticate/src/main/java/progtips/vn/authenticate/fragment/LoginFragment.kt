@@ -16,6 +16,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.include_social_login.*
 
 import progtips.vn.authenticate.R
 
@@ -50,7 +51,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btnLogin.setOnClickListener { signIn() }
+        btnGoogleLogin.setOnClickListener { signIn() }
     }
 
     override fun onStart() {

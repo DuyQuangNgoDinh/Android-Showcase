@@ -1,24 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<vector
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt"
-    android:width="630dp"
-    android:height="100dp"
-    android:viewportWidth="630"
-    android:viewportHeight="100"
-    >
-
-    <group>
-
-        <clip-path
-            android:pathData="M0 0H630V100H0V0Z"
-            />
-
-        <path
-            android:pathData="M0 0V100H630V0"
-            android:fillColor="#59FFFFFF"
-            />
-
-    </group>
-
-</vector>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="#A5140F26" />
+    <corners android:radius="@dimen/edittext_corner_radius"/>
+</shape>
