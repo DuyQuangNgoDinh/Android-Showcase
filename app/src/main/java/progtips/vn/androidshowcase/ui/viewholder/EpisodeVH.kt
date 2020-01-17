@@ -13,7 +13,7 @@ class EpisodeVH(
 
     fun bind(item: String) {
         itemView.setOnClickListener {
-            it.findNavController().navigate(R.id.loginFragment)
+            it.findNavController().navigate(R.id.action_catalogueFragment_to_loginFragment)
         }
         tvFuncName.text = item
     }

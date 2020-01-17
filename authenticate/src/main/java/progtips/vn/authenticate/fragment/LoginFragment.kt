@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -19,7 +20,8 @@ import kotlinx.android.synthetic.main.fragment_login.*
 import progtips.vn.authenticate.R
 
 /**
- * A simple [Fragment] subclass.
+ * Login with Google: https://developers.google.com/identity/sign-in/android/start-integrating
+ * Login with Facebook:
  */
 class LoginFragment : Fragment() {
 
@@ -85,11 +87,7 @@ class LoginFragment : Fragment() {
 
     private fun updateUI(account: GoogleSignInAccount?) {
         if (account != null) {
-            tvLabel.text = "Already logged in"
-            btnLogin.visibility = View.GONE
-        } else {
-            tvLabel.text = "Error!!!!"
-            btnLogin.visibility = View.VISIBLE
+            findNavController().popBackStack()
         }
     }
 }

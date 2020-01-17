@@ -12,10 +12,7 @@
         tools:layout="@layout/fragment_catalogue" >
         <action
             android:id="@+id/action_catalogueFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/auth_nav" />
     </fragment>
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="progtips.vn.authenticate.fragment.LoginFragment"
-        android:label="LoginFragment" />
+    <include app:graph="@navigation/auth_nav" />
 </navigation>
