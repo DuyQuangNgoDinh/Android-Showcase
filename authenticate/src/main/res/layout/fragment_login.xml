@@ -16,6 +16,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
+
+
     <EditText
         android:id="@+id/etEmail"
         android:inputType="textEmailAddress"
@@ -38,7 +40,16 @@
         style="@style/AppTheme.Button"
         android:text="@string/sign_in"/>
 
-
+    <ImageButton
+        android:id="@+id/btnFingerprintLogin"
+        style="@style/AppTheme.SocialButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_round_bg"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:tint="@android:color/white"
+        android:src="@drawable/fingerprint_dialog_fp_to_error" />
 
     <include layout="@layout/horizontal_line_text_middle_divider" />
     <include layout="@layout/include_social_login" />

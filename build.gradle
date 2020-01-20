@@ -20,6 +20,7 @@ buildscript {
 
         // authenticate
         google_auth = '17.0.0'
+        biometric_version = '1.0.1'
     }
     repositories {
         google()
