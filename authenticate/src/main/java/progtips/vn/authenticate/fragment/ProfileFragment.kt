@@ -7,27 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 import progtips.vn.authenticate.R
+import progtips.vn.authenticate.fragment.entity.UserInfo
+import progtips.vn.authenticate.fragment.manager.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class ProfileFragment : Fragment() {
 
-    private lateinit var mGoogleSignInClient: GoogleSignInClient
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .build()
-        mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
-    }
+    private lateinit var authManager: AuthManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,27 +30,28 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        authManager = AuthManager(this)
         btnSignOut.setOnClickListener { signOut() }
     }
 
     override fun onStart() {
         super.onStart()
-
-        handleAccount()
+        checkUserAlreadyLoggedIn()
     }
 
-    private fun handleAccount() {
-        val account = GoogleSignIn.getLastSignedInAccount(requireContext())
-        if(account != null) {
-            tvLabel.text = "Welcome ${account.displayName}"
-        } else
-            findNavController().navigate(R.id.loginFragment)
+    private val showUser: (UserInfo) -> Unit = {
+        tvLabel.text = "Welcome ${it.username}"
+    }
+
+    private val showLoginPage: () -> Unit = {
+        findNavController().navigate(R.id.loginFragment)
+    }
+
+    private fun checkUserAlreadyLoggedIn() {
+        authManager.checkUserAlreadyLoggedIn(showUser, showLoginPage)
     }
 
     private fun signOut() {
-        mGoogleSignInClient.signOut()
-            .addOnCompleteListener(requireActivity()) {
-                findNavController().navigate(R.id.loginFragment)
-            }
+        authManager.currentLoginMethod!!.signOut()
     }
 }
