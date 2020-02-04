@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".fragment.ProfileFragment">
+    tools:context=".fragment.fragment.ProfileFragment">
 
     <TextView
         android:id="@+id/tvLabel"

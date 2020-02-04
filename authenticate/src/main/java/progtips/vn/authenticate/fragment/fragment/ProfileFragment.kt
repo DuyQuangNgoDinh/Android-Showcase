@@ -1,4 +1,4 @@
-package progtips.vn.authenticate.fragment
+package progtips.vn.authenticate.fragment.fragment
 
 
 import android.os.Bundle
@@ -40,7 +40,7 @@ class ProfileFragment : Fragment() {
     }
 
     private val showUser: (UserInfo) -> Unit = {
-        tvLabel.text = "Welcome ${it.username}"
+        tvLabel.text = context?.getString(R.string.welcome_username, it.username)
     }
 
     private val showLoginPage: () -> Unit = {

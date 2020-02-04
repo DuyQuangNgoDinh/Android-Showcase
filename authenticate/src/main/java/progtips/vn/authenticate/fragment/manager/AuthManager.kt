@@ -5,8 +5,10 @@ import progtips.vn.authenticate.fragment.entity.UserInfo
 
 class AuthManager(fragment: Fragment) {
     private var loginMethod = mapOf(
-        LoginMethod.google to GoogleAuth(fragment),
-        LoginMethod.facebook to FacebookAuth(fragment)
+        LoginMethod.Google to GoogleAuth(fragment),
+        LoginMethod.Facebook to FacebookAuth(fragment),
+        LoginMethod.Email to EmailAuth(fragment),
+        LoginMethod.Biometric to BiometricAuth(fragment)
     )
 
     val currentLoginMethod: AuthMethod?

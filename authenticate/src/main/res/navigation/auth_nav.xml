@@ -5,10 +5,10 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="progtips.vn.authenticate.fragment.LoginFragment"
+        android:name="progtips.vn.authenticate.fragment.fragment.LoginFragment"
         android:label="Login"/>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="progtips.vn.authenticate.fragment.ProfileFragment"
+        android:name="progtips.vn.authenticate.fragment.fragment.ProfileFragment"
         android:label="Profile" />
 </navigation>

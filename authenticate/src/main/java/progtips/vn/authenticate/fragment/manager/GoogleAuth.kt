@@ -3,14 +3,12 @@ package progtips.vn.authenticate.fragment.manager
 import android.content.Intent
 import android.util.Log
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import progtips.vn.authenticate.R
-import progtips.vn.authenticate.fragment.LoginFragment
+import progtips.vn.authenticate.fragment.fragment.LoginFragment
 import progtips.vn.authenticate.fragment.entity.UserInfo
 
 class GoogleAuth(
@@ -37,7 +35,7 @@ class GoogleAuth(
 
     override fun signIn() {
         val signInIntent = mGoogleSignInClient.signInIntent
-        fragment.startActivityForResult(signInIntent, LoginFragment.RC_SIGN_IN)
+        fragment.startActivityForResult(signInIntent, LoginFragment.GG_SIGN_IN)
     }
 
     override fun signOut() {
