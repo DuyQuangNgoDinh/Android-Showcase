@@ -17,7 +17,7 @@ abstract class AuthMethod(
     abstract fun signOut()
 
     open fun onSuccessSignIn(userInfo: UserInfo) {
-        fragment.findNavController().navigate(R.id.profileFragment)
+        fragment.findNavController().popBackStack()
     }
 
     open fun onSuccessSignOut() {
