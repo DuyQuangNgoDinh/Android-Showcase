@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_catalogueFragment_to_loginFragment"
             app:destination="@id/auth_nav" />
+        <action
+            android:id="@+id/action_catalogueFragment_to_ocr"
+            app:destination="@id/ocr_nav" />
     </fragment>
     <include app:graph="@navigation/auth_nav" />
+    <include app:graph="@navigation/ocr_nav" />
 </navigation>

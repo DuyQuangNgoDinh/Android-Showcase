@@ -22,6 +22,9 @@ buildscript {
         google_auth = '17.0.0'
         biometric_version = '1.0.1'
         facebook_auth = '5.8.0'
+
+        // google-vision
+        ml_kit_version = '24.0.1'
     }
     repositories {
         google()

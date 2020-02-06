@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ocr_nav"
+    app:startDestination="@id/ocrFragment">
+
+    <fragment
+        android:id="@+id/ocrFragment"
+        android:name="progtips.vn.ocrlibrary.OcrFragment"
+        android:label="fragment_ocr"
+        tools:layout="@layout/fragment_ocr" />
+</navigation>

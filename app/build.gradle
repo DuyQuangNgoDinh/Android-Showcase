@@ -48,6 +48,7 @@ dependencies {
 
     implementation project(':authenticate')
     implementation project(':sharedresource')
+    implementation project(':ocrlibrary')
 
     // Material Design
     implementation "com.google.android.material:material:$material_version"

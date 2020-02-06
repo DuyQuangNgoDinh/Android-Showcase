@@ -6,7 +6,7 @@
 
     <string-array name="components">
         <item>Authentication</item>
-        <item>Authentication</item>
+        <item>OCR</item>
         <item>Authentication</item>
         <item>Authentication</item>
     </string-array>
