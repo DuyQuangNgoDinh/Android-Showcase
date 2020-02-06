@@ -23,6 +23,6 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun doTask() {
-        Thread.sleep(2000)
+        Thread.sleep(0)
     }
 }

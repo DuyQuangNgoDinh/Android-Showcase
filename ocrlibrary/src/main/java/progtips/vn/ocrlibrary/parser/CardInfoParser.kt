@@ -5,8 +5,8 @@ import java.text.SimpleDateFormat
 
 class CardInfoParser {
     companion object {
-        private const val demoText = "P<GBRABC<<JOHN<STONE<THE<<<<<<<<<<<<<<<<<<<<\n" +
-                "1483557823GBR5005240F1601013<<<<<<<<<<<<<<04"
+        private const val demoText = "P<NLDDE<BRUIJN<<WILLEKE<LISELOTTE<<<<<<<<<<<\n" +
+                "SPECI20142NLD6503101F2403096999999990<<<<<84"
         private const val MRZ_REG = "([A-Z])([A-Z0-9<])([A-Z]{3})([A-Z<]{39})\\n([A-Z0-9<]{9})([0-9])([A-Z]{3})([0-9]{6})([0-9])([MF<])([0-9]{6})([0-9])([A-Z0-9<]{14})([0-9])([0-9])"
         private const val NRIC_REG = "([STFGstfg])(\\d{7})([A-Z|a-z])"
         private const val NAME_REG = "Name\\n[A-Z ]+"
@@ -21,14 +21,14 @@ class CardInfoParser {
             var dob: String?
             val sex: String?
 
-            val mrzRex = MRZ_REG.toRegex().find(data)
+            val mrzRex = MRZ_REG.toRegex().find(data.replace(" ",""))
 
             if (mrzRex != null) {
                 val groupValues = mrzRex.destructured.toList()
-                nricNo = groupValues[4]
+                nricNo = groupValues[4].replace("<", "")
                 name = groupValues[3]
 
-                val surname = name.split("<<")[0]
+                val surname = name.split("<<")[0].split("<").joinToString(" ")
                 val firstnames = name.split("<<")[1].split("<").joinToString(" ")
                 name = String.format("%s %s", firstnames, surname)
 
