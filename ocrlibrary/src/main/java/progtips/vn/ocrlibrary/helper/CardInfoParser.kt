@@ -1,4 +1,4 @@
-package progtips.vn.ocrlibrary.parser
+package progtips.vn.ocrlibrary.helper
 
 import progtips.vn.ocrlibrary.model.CardInfo
 import java.text.SimpleDateFormat

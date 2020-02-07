@@ -5,7 +5,9 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.ImageDecoder
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -13,23 +15,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
-import com.google.firebase.ml.vision.common.FirebaseVisionImageMetadata
 import kotlinx.android.synthetic.main.fragment_ocr.*
-import progtips.vn.ocrlibrary.model.CardInfo
-import progtips.vn.ocrlibrary.parser.CardInfoParser
+import progtips.vn.ocrlibrary.helper.CardInfoParser
+import progtips.vn.sharedresource.helper.PhotoSelectionDelegate
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class OcrFragment : Fragment() {
+    private lateinit var photoSelectionDelegate: PhotoSelectionDelegate
+
+    private val RC_PERMISSION_TAKE_PHOTO = 2
+    private val RC_PERMISSION_PICK_PHOTO = 3
+    private val RC_ACTION_TAKE_PHOTO = 4
+    private val RC_ACTION_PICK_PHOTO = 5
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,66 +49,37 @@ class OcrFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        photoSelectionDelegate = PhotoSelectionDelegate(requireActivity(), this,
+            PhotoSelectionDelegate.RequestCodes(
+                RC_PERMISSION_TAKE_PHOTO,
+                RC_PERMISSION_PICK_PHOTO,
+                RC_ACTION_TAKE_PHOTO,
+                RC_ACTION_PICK_PHOTO
+            ), object: PhotoSelectionDelegate.EventListener {
+                override fun onPhotoReady(imageUri: Uri) {
+                    val bitmap = if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P)
+                        decodeBitmapFromUri(imageUri)
+                    else
+                        MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, imageUri)
+
+                    iv_picture.setImageBitmap(bitmap)
+                    recognizeTextInImage(bitmap)
+                }
+            })
+
         btn_takePicture.setOnClickListener {
-            dispatchTakePictureIntent()
+            photoSelectionDelegate.showPhotoSelectionDialog("Choose Photo")
         }
     }
 
-    private val REQUEST_TAKE_PHOTO = 2
-
-    private fun dispatchTakePictureIntent() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            // Ensure that there's a camera activity to handle the intent
-            takePictureIntent.resolveActivity(requireActivity().packageManager)?.also {
-                // Create the File where the photo should go
-                val photoFile: File? = try {
-                    createImageFile()
-                } catch (ex: IOException) {
-                    null
-                }
-                // Continue only if the File was successfully created
-                photoFile?.also {
-                    val photoURI: Uri = FileProvider.getUriForFile(
-                        requireContext(),
-                        "progtips.vn.androidshowcase.fileprovider",
-                        it
-                    )
-                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                    startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO)
-                }
-            }
-        }
+    @RequiresApi(28)
+    private fun decodeBitmapFromUri(imageUri: Uri): Bitmap {
+        val source = ImageDecoder.createSource(requireActivity().contentResolver, imageUri)
+        return ImageDecoder.decodeBitmap(source)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
-            setPic()
-        }
-    }
-
-    lateinit var currentPhotoPath: String
-
-    @Throws(IOException::class)
-    private fun createImageFile(): File {
-        // Create an image file name
-        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-        val storageDir: File? = context?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        return File.createTempFile(
-            "JPEG_${timeStamp}_", /* prefix */
-            ".jpg", /* suffix */
-            storageDir /* directory */
-        ).apply {
-            // Save a file: path for use with ACTION_VIEW intents
-            currentPhotoPath = absolutePath
-        }
-    }
-
-    private fun setPic() {
-        val bmOptions = BitmapFactory.Options()
-        BitmapFactory.decodeFile(currentPhotoPath, bmOptions)?.also { bitmap ->
-            iv_picture.setImageBitmap(bitmap)
-            recognizeTextInImage(bitmap)
-        }
+        photoSelectionDelegate.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun recognizeTextInImage(bitmap: Bitmap) {
