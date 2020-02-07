@@ -17,10 +17,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
+import com.google.firebase.ml.vision.text.FirebaseVisionText
 import kotlinx.android.synthetic.main.fragment_ocr.*
 import progtips.vn.ocrlibrary.helper.CardInfoParser
+import progtips.vn.ocrlibrary.model.CardInfo
 import progtips.vn.sharedresource.helper.PhotoSelectionDelegate
 import java.io.File
 import java.io.IOException
@@ -32,11 +35,12 @@ import java.util.*
  */
 class OcrFragment : Fragment() {
     private lateinit var photoSelectionDelegate: PhotoSelectionDelegate
-
-    private val RC_PERMISSION_TAKE_PHOTO = 2
-    private val RC_PERMISSION_PICK_PHOTO = 3
-    private val RC_ACTION_TAKE_PHOTO = 4
-    private val RC_ACTION_PICK_PHOTO = 5
+    private val photoReadyListener = object: PhotoSelectionDelegate.EventListener {
+        override fun onPhotoReady(imageUri: Uri) {
+            iv_picture.setImageURI(imageUri)
+            recognizeTextInImage(imageUri)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,63 +53,29 @@ class OcrFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        photoSelectionDelegate = PhotoSelectionDelegate(requireActivity(), this,
-            PhotoSelectionDelegate.RequestCodes(
-                RC_PERMISSION_TAKE_PHOTO,
-                RC_PERMISSION_PICK_PHOTO,
-                RC_ACTION_TAKE_PHOTO,
-                RC_ACTION_PICK_PHOTO
-            ), object: PhotoSelectionDelegate.EventListener {
-                override fun onPhotoReady(imageUri: Uri) {
-                    val bitmap = if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P)
-                        decodeBitmapFromUri(imageUri)
-                    else
-                        MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, imageUri)
-
-                    iv_picture.setImageBitmap(bitmap)
-                    recognizeTextInImage(bitmap)
-                }
-            })
+        photoSelectionDelegate = PhotoSelectionDelegate(requireActivity(), this, photoReadyListener)
 
         btn_takePicture.setOnClickListener {
             photoSelectionDelegate.showPhotoSelectionDialog("Choose Photo")
         }
     }
 
-    @RequiresApi(28)
-    private fun decodeBitmapFromUri(imageUri: Uri): Bitmap {
-        val source = ImageDecoder.createSource(requireActivity().contentResolver, imageUri)
-        return ImageDecoder.decodeBitmap(source)
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         photoSelectionDelegate.onActivityResult(requestCode, resultCode, data)
     }
 
-    private fun recognizeTextInImage(bitmap: Bitmap) {
-        // 1. Run the text recognizer
-        // 1.1. Create FirebaseVisionImage
-        val image = FirebaseVisionImage.fromBitmap(bitmap)
-
-        // 1.2. Get recognizer instance
-        val detector = FirebaseVision.getInstance().onDeviceTextRecognizer
-
-        // 1.3. pass the image to the processImage method
-        detector.processImage(image)
-            .addOnSuccessListener { firebaseVisionText ->
-                val info = CardInfoParser.parse(firebaseVisionText.text)
-
-                tv_name.setText(info?.name)
-                tv_dob.setText(info?.dob)
-                tv_number.setText(info?.nricNo)
-                when(info?.sex) {
-                    "M" -> rad_male.isChecked = true
-                    "F" -> rad_female.isChecked = true
-                }
+    private fun recognizeTextInImage(imageUri: Uri) {
+        val onSuccessListener: (CardInfo) -> Unit = { cardInfo ->
+            tv_name.setText(cardInfo.name)
+            tv_dob.setText(cardInfo.dob)
+            tv_number.setText(cardInfo.nricNo)
+            when(cardInfo.sex) {
+                "M" -> rad_male.isChecked = true
+                "F" -> rad_female.isChecked = true
             }
-            .addOnFailureListener { e ->
+        }
 
-            }
+        CardInfoParser(requireActivity(), onSuccessListener).parse(imageUri)
     }
 
 }

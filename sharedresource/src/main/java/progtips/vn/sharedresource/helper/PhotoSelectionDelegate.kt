@@ -21,7 +21,6 @@ const val REQUEST_TAKE_PHOTO = 2
 class PhotoSelectionDelegate(
     private val activity: Activity,
     private val fragment: Fragment?,
-    private val requestCodes: RequestCodes,
     private val eventListener: EventListener
 ) {
 
@@ -112,13 +111,6 @@ class PhotoSelectionDelegate(
     private fun handleCapturedPhoto() {
         eventListener.onPhotoReady(capturedPhotoUri)
     }
-
-    class RequestCodes(
-        val rcTakePhotoPermissions: Int,
-        val rcPickPhotoPermissions: Int,
-        val rcTakePhoto: Int,
-        val rcPickPhoto: Int
-    )
 
     interface EventListener {
         fun onPhotoReady(imageUri: Uri)
