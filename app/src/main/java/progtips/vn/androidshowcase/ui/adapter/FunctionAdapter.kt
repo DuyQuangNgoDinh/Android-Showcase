@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import progtips.vn.androidshowcase.R
+import progtips.vn.androidshowcase.model.Function
 import progtips.vn.androidshowcase.ui.viewholder.EpisodeVH
 
 class FunctionAdapter(
-    private val itemList: Array<String>
+    private val itemList: List<Function>
 ): RecyclerView.Adapter<EpisodeVH>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EpisodeVH {

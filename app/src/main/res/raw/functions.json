@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Authentication",
+    "id": 1,
+    "color": "#ff0000"
+  },
+  {
+    "title": "OCR Library",
+    "id": 2,
+    "color": "#00ff00"
+  }
+]

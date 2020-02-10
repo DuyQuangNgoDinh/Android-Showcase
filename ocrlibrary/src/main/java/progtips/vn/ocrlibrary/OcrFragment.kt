@@ -37,8 +37,10 @@ class OcrFragment : Fragment() {
     private lateinit var photoSelectionDelegate: PhotoSelectionDelegate
     private val photoReadyListener = object: PhotoSelectionDelegate.EventListener {
         override fun onPhotoReady(imageUri: Uri) {
+            pb_processing.visibility = View.VISIBLE
             iv_picture.setImageURI(imageUri)
             recognizeTextInImage(imageUri)
+            pb_processing.visibility = View.INVISIBLE
         }
     }
 

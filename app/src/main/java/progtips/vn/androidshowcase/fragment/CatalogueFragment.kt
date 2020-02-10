@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import progtips.vn.androidshowcase.R
 import progtips.vn.androidshowcase.ui.adapter.FunctionAdapter
+import progtips.vn.androidshowcase.ui.helper.FunctionList
 
 /**
  * A simple [Fragment] subclass.
@@ -25,9 +26,10 @@ class CatalogueFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val viewManager = GridLayoutManager(context, 2)
-        val viewAdapter = FunctionAdapter(resources.getStringArray(R.array.components))
+        val functionList = FunctionList.initFunctionEntryList(resources)
+        val viewAdapter = FunctionAdapter(functionList)
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rcv_func).apply {
+        view.findViewById<RecyclerView>(R.id.rcv_func).apply {
             // use this setting to improve performance if you know that changes
             // in content do not change the layout size of the RecyclerView
             setHasFixedSize(true)
