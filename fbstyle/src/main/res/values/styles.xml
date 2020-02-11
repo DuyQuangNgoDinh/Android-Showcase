@@ -25,6 +25,11 @@
     </style>
 
     <style name="Comment.Reaction">
+        <item name="android:textColor">@drawable/like_action_tint</item>
+    </style>
+
+    <style name="Comment.Reply">
         <item name="android:textColor">#666666</item>
+        <item name="android:layout_marginStart">13dp</item>
     </style>
 </resources>

@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">FBstyle</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_a_comment">Add a comment&#8230;</string>
+    <string name="like">Like</string>
+    <string name="reply">Reply</string>
+
+    <plurals name="replies">
+        <item quantity="one">1 Reply</item>
+        <item quantity="many">%d Replies</item>
+    </plurals>
 </resources>

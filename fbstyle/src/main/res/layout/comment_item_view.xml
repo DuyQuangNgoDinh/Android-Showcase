@@ -59,17 +59,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Comment.Reaction"
-            android:text="Like" />
+            android:text="@string/like" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/Comment.Reaction"
-            android:text="Reply" />
+            style="@style/Comment.Reply"
+            android:text="@string/reply" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:text="3 Replies" />
 
     </LinearLayout>
