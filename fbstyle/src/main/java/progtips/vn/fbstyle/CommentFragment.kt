@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_comment.*
 import progtips.vn.fbstyle.ui.adapter.CommentAdapter
 import progtips.vn.fbstyle.ui.helper.CommentList
 
@@ -29,6 +30,8 @@ class CommentFragment : Fragment() {
         val viewManager = LinearLayoutManager(context)
         val commentList = CommentList.initCommentList()
         val viewAdapter = CommentAdapter(commentList)
+
+        rcv_comments
 
         view.findViewById<RecyclerView>(R.id.rcv_comments).apply {
             // use this setting to improve performance if you know that changes

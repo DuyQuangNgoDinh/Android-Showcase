@@ -4,6 +4,8 @@
     <string name="add_a_comment">Add a comment&#8230;</string>
     <string name="like">Like</string>
     <string name="reply">Reply</string>
+    <string name="action_expand">See More</string>
+    <string name="action_collapse">See Less</string>
 
     <plurals name="replies">
         <item quantity="one">1 Reply</item>

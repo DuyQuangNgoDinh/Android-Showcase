@@ -13,6 +13,7 @@
         android:id="@+id/iv_avatar"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -28,22 +29,29 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/tv_username"
             style="@style/Comment.Username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kenneth Lim" />
+            tools:text="Kenneth Lim" />
 
         <TextView
+            android:id="@+id/tv_post_time"
             style="@style/Comment.Date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3 hours ago" />
+            tools:text="3 hours ago" />
 
-        <TextView
+        <progtips.vn.sharedresource.widget.ExpandableTextView
+            android:id="@+id/tv_post_content"
             style="@style/Comment.Content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta felis dolor, vitae auctor magna congue eu. Aenean sollicitudin arcu ut orci semper blandit..." />
+            app:buttonColor="#999999"
+            app:collapseText="@string/action_collapse"
+            app:expandText="@string/action_expand"
+            app:trimLines="3"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta felis dolor, vitae auctor magna congue eu. Aenean sollicitudin arcu ut orci semper blandit..." />
 
     </LinearLayout>
 
