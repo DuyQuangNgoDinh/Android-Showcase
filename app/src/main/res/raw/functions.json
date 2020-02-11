@@ -2,11 +2,16 @@
   {
     "title": "Authentication",
     "id": 1,
-    "color": "#ff0000"
+    "color": "#9bf0e1"
   },
   {
     "title": "OCR Library",
     "id": 2,
-    "color": "#00ff00"
+    "color": "#c3f0c8"
+  },
+  {
+    "title": "Facebook Style",
+    "id": 3,
+    "color": "#c3f0c8"
   }
 ]

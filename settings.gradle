@@ -1,2 +1,2 @@
-include ':app', ':authenticate', ':sharedresource', ':ocrlibrary'
+include ':app', ':authenticate', ':sharedresource', ':ocrlibrary', ':fbstyle'
 rootProject.name='Android Showcase'

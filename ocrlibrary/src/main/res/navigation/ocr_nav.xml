@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/ocrFragment"
         android:name="progtips.vn.ocrlibrary.OcrFragment"
-        android:label="fragment_ocr"
+        android:label="Scan"
         tools:layout="@layout/fragment_ocr" />
 </navigation>
