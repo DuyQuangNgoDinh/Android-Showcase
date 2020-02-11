@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ExpandableTextView">
+        <attr name="collapseText" format="string"/>
+        <attr name="trimLines" format="integer"/>
+        <attr name="originalText" format="string"/>
+        <attr name="buttonColor" format="color"/>
+        <attr name="expandText" format="reference"/>
+    </declare-styleable>
+
+</resources>
