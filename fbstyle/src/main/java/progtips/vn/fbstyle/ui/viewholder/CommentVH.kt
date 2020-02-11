@@ -17,18 +17,14 @@ class CommentVH(
     private val tvUsername by lazy { itemView.findViewById<TextView>(R.id.tv_username) }
     private val tvPostTime by lazy { itemView.findViewById<TextView>(R.id.tv_post_time) }
     private val tvPostContent by lazy { itemView.findViewById<ExpandableTextView>(R.id.tv_post_content) }
+    private val tvReplies by lazy { itemView.findViewById<TextView>(R.id.tv_replies) }
 
     fun bind(item: Comment) {
-        itemView.setOnClickListener {
-            when(item) {
-
-            }
-        }
-
         ivAvatar.loadRoundCornerCenterCropImage(item.avatar, 100)
         tvUsername.text = item.name
         tvPostTime.text = DateUtils.getRelativeTimeSpanString(item.upload)
         tvPostContent.setOriginalText(item.content)
+        tvReplies.text = itemView.resources.getQuantityString(R.plurals.replies, item.replies?.size ?: 0, item.replies?.size ?: 0)
     }
 
 }

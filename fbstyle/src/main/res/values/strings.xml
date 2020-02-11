@@ -8,7 +8,8 @@
     <string name="action_collapse">See Less</string>
 
     <plurals name="replies">
-        <item quantity="one">1 Reply</item>
+        <item quantity="one">%d Reply</item>
         <item quantity="many">%d Replies</item>
+        <item quantity="other">%d Replies</item>
     </plurals>
 </resources>
