@@ -25,6 +25,9 @@ buildscript {
 
         // google-vision
         ml_kit_version = '24.0.1'
+
+        // glide
+        glide_version = '4.11.0'
     }
     repositories {
         google()
