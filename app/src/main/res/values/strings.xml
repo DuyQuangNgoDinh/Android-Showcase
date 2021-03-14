@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Android Showcase</string>
+    <string name="app_name_dev">[DEV] Android Showcase</string>
+
+    <!-- Activity Names -->
+    <string name="title_activity_splash">SplashActivity</string>
+
+    <string-array name="components">
+        <item>Authentication</item>
+        <item>OCR</item>
+        <item>Authentication</item>
+        <item>Authentication</item>
+    </string-array>
+
+    <string name="function_catalogue">Function Catalogue</string>
+</resources>

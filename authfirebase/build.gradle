@@ -1,0 +1,61 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion build_versions.compile_sdk
+
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "env"
+
+    productFlavors {
+        dev {
+            dimension "env"
+        }
+
+        production {
+            dimension "env"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation deps.kotlin_std
+    implementation deps.core_ktx
+    implementation deps.app_compat
+    implementation deps.material
+
+    // Firebase Auth
+    implementation deps.firebase_auth
+    implementation deps.play_services_auth
+    implementation deps.facebook_login
+    implementation deps.ktx_coroutines_play_service
+
+    // Testing
+    testImplementation deps.junit
+}

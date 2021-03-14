@@ -1,0 +1,2 @@
+include ':app', ':sharedresource', ':authfirebase'
+rootProject.name='Android Showcase'

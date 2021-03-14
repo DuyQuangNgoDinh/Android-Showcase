@@ -1,0 +1,180 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
+    id 'com.google.gms.google-services'
+    id 'dagger.hilt.android.plugin'
+}
+
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+
+def keystoreProperties = new Properties()
+
+if (keystorePropertiesFile.canRead()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+ext {
+    APP_NAME = "@string/app_name"
+    APP_NAME_DEV = "@string/app_name_dev"
+}
+
+android {
+    compileSdkVersion build_versions.compile_sdk
+
+    signingConfigs {
+        if (keystoreProperties.containsKey('debugStoreFile')) {
+            debugConfig {
+                keyAlias keystoreProperties['debugKeyAlias']
+                keyPassword keystoreProperties['debugKeyPassword']
+                storeFile file(keystoreProperties['debugStoreFile'])
+                storePassword keystoreProperties['debugStorePassword']
+            }
+        }
+
+        if (keystoreProperties.containsKey('releaseStoreFile')) {
+            releaseConfig {
+                keyAlias keystoreProperties['releaseKeyAlias']
+                keyPassword keystoreProperties['releaseKeyPassword']
+                storeFile file(keystoreProperties['releaseStoreFile'])
+                storePassword keystoreProperties['releaseStorePassword']
+            }
+        }
+    }
+
+    defaultConfig {
+        applicationId "progtips.vn.androidshowcase"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 3
+        versionName "1.0.3"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+
+            if (keystoreProperties.containsKey('debugStoreFile')) {
+                signingConfig signingConfigs.debugConfig
+            }
+        }
+
+        release {
+            minifyEnabled true
+            shrinkResources true
+            debuggable false
+
+            if (keystoreProperties.containsKey('releaseStoreFile')) {
+                signingConfig signingConfigs.releaseConfig
+            }
+
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "env"
+
+    productFlavors {
+        dev {
+            dimension "env"
+            manifestPlaceholders = [applicationLabel: APP_NAME_DEV]
+            versionNameSuffix "-dev"
+        }
+
+        production {
+            dimension "env"
+            manifestPlaceholders = [applicationLabel: APP_NAME]
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.0.0-beta01'
+    }
+
+    testOptions.unitTests {
+        includeAndroidResources = true
+        all {
+            testLogging {
+                exceptionFormat "full"
+                events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+            }
+        }
+    }
+
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+        kotlinOptions {
+            // Treat all Kotlin warnings as errors
+            allWarningsAsErrors = true
+
+            // Enable experimental coroutines APIs, including Flow
+            freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+            freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
+            freeCompilerArgs += "-Xopt-in=kotlin.Experimental"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation deps.kotlin_std
+    implementation deps.core_ktx
+    implementation deps.fragment_ktx
+    implementation deps.app_compat
+    implementation deps.material
+    implementation deps.nav_fragment
+    implementation deps.nav_ui
+    implementation deps.constraint_layout
+
+    // Other Modules
+    implementation project(':authfirebase')
+    implementation project(':sharedresource')
+
+    // ViewModel & Livedata
+    implementation deps.viewmodel
+    implementation deps.livedata
+    implementation deps.coroutines
+
+    // Hilt
+    implementation deps.hilt_android
+    kapt deps.hilt_compiler
+
+    // Jetpack compose
+    implementation deps.compose_ui
+    implementation deps.compose_ui_tooling
+    implementation deps.activity_compose
+    implementation deps.compose_foundation
+    implementation deps.compose_material
+    implementation deps.compose_material_icon
+    implementation deps.compose_material_icon_extended
+    implementation deps.compose_livedata
+
+    implementation deps.retrofit_gson_converter
+
+    // Testing
+    testImplementation deps.junit
+    testImplementation deps.junit_ktx
+    testImplementation deps.arch_core_testing
+    testImplementation deps.core_ktx
+    testImplementation deps.robolectric
+    testImplementation deps.mockk
+    testImplementation deps.coroutines_test
+    testImplementation deps.mock_web_server
+    testImplementation deps.hamcrest
+}

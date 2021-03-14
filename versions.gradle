@@ -1,0 +1,175 @@
+def build_versions = [:]
+build_versions.min_sdk = 21
+build_versions.target_sdk = 30
+build_versions.compile_sdk = build_versions.target_sdk
+
+ext.build_versions = build_versions
+
+def versions = [:]
+versions.gradle_plugin = '7.0.0-alpha09'
+versions.kotlin_version = "1.4.30"
+
+versions.core_ktx = "1.3.2"
+versions.fragment_ktx = "1.3.1"
+versions.app_compat = "1.3.0-beta01"
+versions.constraint_layout = "2.0.4"
+versions.recyclerview = "1.1.0"
+versions.swipe_refresh = "1.1.0"
+versions.material = "1.3.0-alpha04"
+versions.coordinator_layout = "1.1.0"
+
+versions.junit = '4.13.1'
+versions.test_junit = '1.1.2'
+versions.expresso_core = '3.3.0'
+versions.robolectric = '4.5'
+versions.mockk = '1.10.2'
+versions.coroutines_test = '1.4.0-M1'
+versions.arch_core_testing = '2.1.0'
+versions.test_core_ktx = '1.3.0'
+versions.hamcrest = '2.2'
+
+versions.google_services = "4.3.5"
+versions.firebase_auth = "19.3.1"
+versions.play_services_auth = "18.0.0"
+versions.facebook_login = "5.8.0"
+versions.ktx_coroutines_play_service = "1.3.2"
+//biometric_version = '1.0.1'
+//ml_kit_version = '24.0.1'
+
+versions.jetpack_compose = "1.0.0-beta02"
+versions.activity_compose = "1.3.0-alpha04"
+
+versions.glide = "4.11.0"
+
+versions.timber = "4.7.1"
+
+versions.dagger = "2.30.1"
+versions.hilt = "2.32-alpha"
+
+versions.okhttp = "4.9.0"
+
+versions.retrofit = "2.9.0"
+versions.retrofit_coroutines = "0.9.2"
+
+versions.adobe_core = "1.5.8"
+versions.adobe_analytics = "1.2.6"
+
+versions.newrelic = "5.28.0"
+
+versions.navigation = "2.3.2"
+
+versions.paging = "2.1.2"
+
+versions.lifecycle_version = "2.2.0"
+
+versions.coroutines = "1.4.1"
+
+versions.room = "2.2.5"
+
+versions.google_ads = '19.7.0'
+
+ext.versions = versions
+
+def deps = [:]
+deps.gradle_plugin = "com.android.tools.build:gradle:$versions.gradle_plugin"
+
+// Kotlin
+deps.kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin_version"
+deps.kotlin_std = "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin_version"
+
+// Support libraries
+deps.core_ktx = "androidx.core:core-ktx:$versions.core_ktx"
+deps.fragment_ktx = "androidx.fragment:fragment-ktx:$versions.fragment_ktx"
+deps.app_compat = "androidx.appcompat:appcompat:$versions.app_compat"
+deps.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
+deps.recyclerview = "androidx.recyclerview:recyclerview:$versions.recyclerview"
+deps.swiperefreshlayout = "androidx.swiperefreshlayout:swiperefreshlayout:$versions.swipe_refresh"
+deps.material = "com.google.android.material:material:$versions.material"
+deps.coordinator_layout = "androidx.coordinatorlayout:coordinatorlayout:$versions.coordinator_layout"
+
+// Glide
+deps.glide = "com.github.bumptech.glide:glide:$versions.glide"
+deps.glide_compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+
+// Timber
+deps.timber = "com.jakewharton.timber:timber:$versions.timber"
+
+// Dagger
+deps.hilt_android_gradle_plugin = "com.google.dagger:hilt-android-gradle-plugin:$versions.hilt"
+deps.hilt_android = "com.google.dagger:hilt-android:$versions.hilt"
+deps.hilt_compiler = "com.google.dagger:hilt-compiler:$versions.hilt"
+deps.dagger = "com.google.dagger:dagger:$versions.dagger"
+deps.dagger_compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+deps.dagger_android = "com.google.dagger:dagger-android:$versions.dagger"
+deps.dagger_android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
+deps.dagger_android_processor = "com.google.dagger:dagger-android-processor:$versions.dagger"
+
+// Okhttp
+deps.okhttp = "com.squareup.okhttp3:okhttp:$versions.okhttp"
+deps.okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
+deps.mock_web_server = "com.squareup.okhttp3:mockwebserver:$versions.okhttp"
+
+// Retrofit
+deps.retrofit = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+deps.retrofit_gson_converter = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+deps.retrofit_coroutines_adapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$versions.retrofit_coroutines"
+
+// Analytics
+deps.adobe_core = "com.adobe.marketing.mobile:sdk-core:$versions.adobe_core"
+deps.adobe_analytics = "com.adobe.marketing.mobile:analytics:$versions.adobe_analytics"
+
+// Newrelic
+deps.newrelic_plugin = "com.newrelic.agent.android:agent-gradle-plugin:$versions.newrelic"
+deps.newrelic_agent = "com.newrelic.agent.android:android-agent:$versions.newrelic"
+
+// Architecture components - Navigation
+deps.nav_fragment = "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+deps.nav_ui = "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+deps.nav_safe_args = "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
+
+// Lifecycle
+deps.viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle_version"
+deps.livedata = "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle_version"
+
+// Coroutines
+deps.coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines"
+
+// Room
+deps.room_runtime = "androidx.room:room-runtime:$versions.room"
+deps.room_compiler = "androidx.room:room-compiler:$versions.room"
+deps.room_ktx = "androidx.room:room-ktx:$versions.room"
+
+deps.paging = "androidx.paging:paging-runtime:$versions.paging"
+
+// Firebase Auth
+deps.google_services = "com.google.gms:google-services:$versions.google_services"
+deps.firebase_auth = "com.google.firebase:firebase-auth:$versions.firebase_auth"
+deps.play_services_auth = "com.google.android.gms:play-services-auth:$versions.play_services_auth"
+deps.facebook_login = "com.facebook.android:facebook-login:$versions.facebook_login"
+deps.ktx_coroutines_play_service = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$versions.ktx_coroutines_play_service"
+
+// Testing
+deps.junit = "junit:junit:$versions.junit"
+deps.junit_ktx = "androidx.test.ext:junit-ktx:$versions.test_junit"
+deps.expresso_core = "androidx.test.espresso:espresso-core:$versions.expresso_core"
+deps.core_ktx = "androidx.test:core-ktx:$versions.test_core_ktx"
+deps.robolectric = "org.robolectric:robolectric:$versions.robolectric"
+deps.mockk = "io.mockk:mockk:$versions.mockk"
+deps.coroutines_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutines_test"
+deps.arch_core_testing = "androidx.arch.core:core-testing:$versions.arch_core_testing"
+deps.hamcrest = "org.hamcrest:hamcrest:$versions.hamcrest"
+
+// Advertisement
+deps.google_ads = "com.google.android.gms:play-services-ads:$versions.google_ads"
+
+// Jetpack compose
+deps.compose_ui = "androidx.compose.ui:ui:$versions.jetpack_compose"
+deps.compose_ui_tooling = "androidx.compose.ui:ui-tooling:$versions.jetpack_compose"  // Tooling support (Previews, etc.)
+deps.activity_compose = "androidx.activity:activity-compose:$versions.activity_compose"
+deps.compose_foundation = "androidx.compose.foundation:foundation:$versions.jetpack_compose"
+deps.compose_material = "androidx.compose.material:material:$versions.jetpack_compose"
+deps.compose_material_icon = "androidx.compose.material:material-icons-core:$versions.jetpack_compose"
+deps.compose_material_icon_extended = "androidx.compose.material:material-icons-extended:$versions.jetpack_compose"
+deps.compose_livedata = "androidx.compose.runtime:runtime-livedata:$versions.jetpack_compose"
+
+ext.deps = deps

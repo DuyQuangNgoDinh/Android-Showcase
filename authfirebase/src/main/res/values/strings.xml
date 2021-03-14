@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_signin_google">Fail to sign in with Google</string>
+    <string name="error_signin_facebook">Fail to sign in with Facebook</string>
+    <string name="error_signup">Fail to sign up</string>
+</resources>
