@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.flow.asFlow
 import progtips.vn.asia.authfirebase.account.toAccount
@@ -12,7 +11,6 @@ import progtips.vn.asia.authfirebase.state.AuthManagerInitializedState
 import progtips.vn.asia.authfirebase.state.AuthManagerState
 import progtips.vn.asia.authfirebase.state.AuthManagerUninitializedState
 
-@ExperimentalCoroutinesApi
 class FirebaseAuthManager {
 
     companion object {

@@ -64,6 +64,11 @@ dependencies {
     implementation deps.facebook_login
     implementation deps.ktx_coroutines_play_service
 
+    implementation deps.coroutines
+
     // Testing
     testImplementation deps.junit
+    testImplementation deps.mockk
+    testImplementation deps.coroutines_test
+    testImplementation deps.hamcrest
 }
