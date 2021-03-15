@@ -2,6 +2,7 @@ package progtips.vn.androidshowcase.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
+import progtips.vn.androidshowcase.MainActivity
 
 /**
  * Splashscreen Activity

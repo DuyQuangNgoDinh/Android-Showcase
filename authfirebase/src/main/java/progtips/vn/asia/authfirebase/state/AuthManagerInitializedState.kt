@@ -17,13 +17,15 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import progtips.vn.asia.authfirebase.R
 import progtips.vn.asia.authfirebase.account.toAccount
 import progtips.vn.asia.authfirebase.auth.AuthStatus
 
 class AuthManagerInitializedState(
-    private val activity: Activity
-): AuthManagerState() {
+    private val activity: Activity,
+    private val authStateChannel: ConflatedBroadcastChannel<AuthStatus>
+): AuthManagerState {
 
     companion object {
         private const val RC_LOGIN_GOOGLE = 1001
@@ -53,8 +55,7 @@ class AuthManagerInitializedState(
     private fun initFacebookSignIn() {
         callbackManager = CallbackManager.Factory.create()
 
-        LoginManager.getInstance().registerCallback(callbackManager, object :
-            FacebookCallback<LoginResult> {
+        LoginManager.getInstance().registerCallback(callbackManager, object: FacebookCallback<LoginResult> {
             override fun onSuccess(loginResult: LoginResult) {
                 handleFacebookAccessToken(loginResult.accessToken)
             }

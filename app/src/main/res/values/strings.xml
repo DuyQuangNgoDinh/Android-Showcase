@@ -13,4 +13,18 @@
     </string-array>
 
     <string name="function_catalogue">Function Catalogue</string>
+
+    <!-- Authentication -->
+    <string name="title_login">Login</string>
+    <string name="title_signup">Sign Up</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="label_login">Login</string>
+    <string name="label_logout">Logout</string>
+    <string name="label_login_google">Login with Google</string>
+    <string name="label_login_facebook">Login with Facebook</string>
+    <string name="link_to_signup_page">Do not have account? Sign up now.</string>
+
+    <!-- Profile -->
+    <string name="title_profile">Profile</string>
 </resources>

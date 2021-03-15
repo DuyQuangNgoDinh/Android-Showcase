@@ -2,37 +2,19 @@ package progtips.vn.asia.authfirebase.state
 
 import android.content.Intent
 import androidx.fragment.app.Fragment
-import kotlinx.coroutines.channels.ConflatedBroadcastChannel
-import progtips.vn.asia.authfirebase.auth.AuthStatus
 
-abstract class AuthManagerState {
-    val authStateChannel = ConflatedBroadcastChannel<AuthStatus>(AuthStatus.Uninitialized)
+interface AuthManagerState {
+    fun login(email: String, password: String)
 
-    open fun login(email: String, password: String) {
-        authStateChannel.offer(AuthStatus.Uninitialized)
-    }
+    fun createAccount(email: String, password: String)
 
-    open fun createAccount(email: String, password: String) {
-        authStateChannel.offer(AuthStatus.Uninitialized)
-    }
+    fun logout()
 
-    open fun logout() {
-        authStateChannel.offer(AuthStatus.Uninitialized)
-    }
+    fun loginWithGoogle(fragment: Fragment)
 
-    open fun loginWithGoogle(fragment: Fragment) {
-        authStateChannel.offer(AuthStatus.Uninitialized)
-    }
+    fun loginWithFacebook(fragment: Fragment)
 
-    open fun loginWithFacebook(fragment: Fragment) {
-        authStateChannel.offer(AuthStatus.Uninitialized)
-    }
+    fun onFacebookLoginActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
 
-    open fun onFacebookLoginActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        authStateChannel.offer(AuthStatus.Uninitialized)
-    }
-
-    open fun onGoogleLoginActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        authStateChannel.offer(AuthStatus.Uninitialized)
-    }
+    fun onGoogleLoginActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
 }
