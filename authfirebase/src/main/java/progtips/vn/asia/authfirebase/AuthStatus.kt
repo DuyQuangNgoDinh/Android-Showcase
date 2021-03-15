@@ -1,4 +1,4 @@
-package progtips.vn.asia.authfirebase.auth
+package progtips.vn.asia.authfirebase
 
 import progtips.vn.asia.authfirebase.account.Account
 

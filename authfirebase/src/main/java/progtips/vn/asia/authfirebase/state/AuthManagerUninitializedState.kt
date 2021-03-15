@@ -3,9 +3,10 @@ package progtips.vn.asia.authfirebase.state
 import android.content.Intent
 import androidx.fragment.app.Fragment
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
-import progtips.vn.asia.authfirebase.auth.AuthStatus
+import progtips.vn.asia.authfirebase.AuthStatus
 
-class AuthManagerUninitializedState(private val authStateChannel: ConflatedBroadcastChannel<AuthStatus>): AuthManagerState {
+class AuthManagerUninitializedState(private val authStateChannel: ConflatedBroadcastChannel<AuthStatus>):
+    AuthManagerState {
     override fun login(email: String, password: String) {
         authStateChannel.offer(AuthStatus.Uninitialized)
     }

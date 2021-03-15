@@ -18,9 +18,9 @@ import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
+import progtips.vn.asia.authfirebase.AuthStatus
 import progtips.vn.asia.authfirebase.R
 import progtips.vn.asia.authfirebase.account.toAccount
-import progtips.vn.asia.authfirebase.auth.AuthStatus
 
 class AuthManagerInitializedState(
     private val activity: Activity,
