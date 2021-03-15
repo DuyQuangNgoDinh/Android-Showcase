@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.onStart
 import progtips.vn.androidshowcase.main.auth.model.AuthState
 import progtips.vn.androidshowcase.main.auth.model.AuthState.Authenticated
 import progtips.vn.androidshowcase.main.auth.model.AuthState.Unauthenticated
+import progtips.vn.asia.authfirebase.AuthStatus
 import progtips.vn.asia.authfirebase.FirebaseAuthManager
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -21,10 +22,14 @@ class AuthRepository @Inject constructor(
         currentAuthenticationState()
     }
 
-//    val loadingFlow = authManager.authStateFlow.map { it == AuthStatus.Authenticating }
+    val loadingFlow = authManager.authStateFlow.map { it == AuthStatus.Authenticating }
 
     fun login(email: String, password: String) {
         authManager.login(email, password)
+    }
+
+    fun signUp(email: String, password: String) {
+        authManager.createAccount(email, password)
     }
 
     fun loginWithFacebook(fragment: Fragment) {
