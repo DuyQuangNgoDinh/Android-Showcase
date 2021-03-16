@@ -62,7 +62,7 @@ dependencies {
     implementation deps.firebase_auth
     implementation deps.play_services_auth
     implementation deps.facebook_login
-    implementation deps.ktx_coroutines_play_service
+    implementation deps.coroutines
 
     implementation deps.coroutines
 
