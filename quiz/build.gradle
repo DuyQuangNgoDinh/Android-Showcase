@@ -38,4 +38,8 @@ dependencies {
     implementation deps.material
 
     implementation deps.coroutines
+
+    testImplementation deps.junit
+    testImplementation deps.hamcrest
+    testImplementation deps.coroutines_test
 }
