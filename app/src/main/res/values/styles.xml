@@ -13,4 +13,30 @@
         <item name="android:windowIsFloating">false</item>
     </style>
 
+    <style name="AppTheme.EditText">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorHint">#66FFFFFF</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@drawable/edittext_bg</item>
+    </style>
+
+    <style name="AppTheme.Button" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@drawable/button_bg</item>
+        <item name="android:layout_marginTop">@dimen/section_view_margin</item>
+        <item name="android:layout_marginBottom">@dimen/section_view_margin</item>
+    </style>
+
+    <style name="AppTheme.SocialButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_marginLeft">@dimen/social_inner_margin</item>
+        <item name="android:layout_marginRight">@dimen/social_inner_margin</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+    <style name="AppTheme.EditText.EmailPassword">
+        <item name="android:layout_marginTop">@dimen/inner_view_margin</item>
+        <item name="android:layout_marginBottom">@dimen/inner_view_margin</item>
+    </style>
+
 </resources>

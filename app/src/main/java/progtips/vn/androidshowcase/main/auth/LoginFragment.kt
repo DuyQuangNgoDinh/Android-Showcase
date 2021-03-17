@@ -30,11 +30,11 @@ class LoginFragment: BaseFragment<FmLoginBinding>(R.layout.fm_login) {
                 it.findNavController().navigate(LoginFragmentDirections.loginToSignUp())
             }
 
-            btnGoogleLogin.setOnClickListener {
+            socialLogin.btnGoogleLogin.setOnClickListener {
                 loginViewModel.loginWithGoogle(this@LoginFragment)
             }
 
-            btnFacebookLogin.setOnClickListener {
+            socialLogin.btnFacebookLogin.setOnClickListener {
                 loginViewModel.loginWithFacebook(this@LoginFragment)
             }
         }

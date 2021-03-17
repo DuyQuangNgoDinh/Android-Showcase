@@ -25,6 +25,13 @@
     <string name="label_login_facebook">Login with Facebook</string>
     <string name="link_to_signup_page">Do not have account? Sign up now.</string>
 
+    <string name="enter_your_email_address">Enter your email address</string>
+    <string name="enter_your_password">Your password</string>
+    <string name="welcome_username">Welcome %s</string>
+
+    <string name="sign_in">SIGN IN</string>
+    <string name="sign_out">SIGN OUT</string>
+
     <!-- Profile -->
     <string name="title_profile">Profile</string>
 </resources>

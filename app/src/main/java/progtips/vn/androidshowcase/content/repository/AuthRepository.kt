@@ -9,6 +9,7 @@ import progtips.vn.androidshowcase.main.auth.model.AuthState.Authenticated
 import progtips.vn.androidshowcase.main.auth.model.AuthState.Unauthenticated
 import progtips.vn.asia.authfirebase.AuthStatus
 import progtips.vn.asia.authfirebase.FirebaseAuthManager
+import progtips.vn.asia.authfirebase.account.LoginMethod
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -17,9 +18,9 @@ class AuthRepository @Inject constructor(
     private val authManager: FirebaseAuthManager
 ) {
     val authStateFlow = authManager.authStateFlow.map {
-        currentAuthenticationState()
+        currentAuthenticationState(it)
     }.onStart {
-        currentAuthenticationState()
+        currentAuthenticationState(null)
     }
 
     val loadingFlow = authManager.authStateFlow.map { it == AuthStatus.Authenticating }
@@ -44,8 +45,8 @@ class AuthRepository @Inject constructor(
         authManager.logout()
     }
 
-    private fun currentAuthenticationState(): AuthState {
-        val user = FirebaseAuthManager.getCurrentUser()
+    private fun currentAuthenticationState(authStatus: AuthStatus?): AuthState {
+        val user = FirebaseAuthManager.getCurrentUser(authStatus)
         return if (user != null) Authenticated(user) else Unauthenticated
     }
 
