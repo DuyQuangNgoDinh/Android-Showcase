@@ -6,15 +6,21 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.flow.asFlow
+import progtips.vn.asia.authfirebase.account.LoginMethod
 import progtips.vn.asia.authfirebase.account.toAccount
 import progtips.vn.asia.authfirebase.state.AuthManagerInitializedState
 import progtips.vn.asia.authfirebase.state.AuthManagerState
 import progtips.vn.asia.authfirebase.state.AuthManagerUninitializedState
 
+/**
+ * Login with Google: https://developers.google.com/identity/sign-in/android/start-integrating
+ * Login with Facebook: https://developers.facebook.com/docs/facebook-login/android/
+ * Login with Biometric:
+ */
 class FirebaseAuthManager {
 
     companion object {
-        fun getCurrentUser() = FirebaseAuth.getInstance().currentUser?.toAccount()
+        fun getCurrentUser(authStatus: AuthStatus? = null) = FirebaseAuth.getInstance().currentUser?.toAccount(authStatus)
     }
 
     private val authStateChannel = ConflatedBroadcastChannel<AuthStatus>(AuthStatus.Uninitialized)
