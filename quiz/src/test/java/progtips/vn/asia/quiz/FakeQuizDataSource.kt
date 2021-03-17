@@ -1,8 +1,10 @@
 package progtips.vn.asia.quiz
 
+import kotlinx.coroutines.flow.flow
+
 class FakeQuizDataSource: QuizDataSource {
-    override suspend fun getQuestions(): List<Question> {
-        return listOf(
+    override suspend fun getQuestions() = flow {
+        emit(listOf(
             Question(
                 "Question 1",
                 listOf(
@@ -30,6 +32,6 @@ class FakeQuizDataSource: QuizDataSource {
                     Answer("Answer 4", true)
                 )
             )
-        )
+        ))
     }
 }
