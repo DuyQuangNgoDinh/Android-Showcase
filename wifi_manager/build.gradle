@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion build_versions.compile_sdk
+
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+        kotlinOptions {
+            // Enable experimental coroutines APIs, including Flow
+            freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+            freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
+            freeCompilerArgs += "-Xopt-in=kotlin.Experimental"
+        }
+    }
+}
+
+dependencies {
+    implementation deps.kotlin_std
+    implementation deps.core_ktx
+    implementation deps.app_compat
+    implementation deps.material
+
+    implementation deps.coroutines
+
+    testImplementation deps.junit
+    testImplementation deps.hamcrest
+    testImplementation deps.coroutines_test
+}
