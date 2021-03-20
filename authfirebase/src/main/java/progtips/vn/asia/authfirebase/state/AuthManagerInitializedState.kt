@@ -19,10 +19,15 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import progtips.vn.asia.authfirebase.AuthStatus
+import progtips.vn.asia.authfirebase.AuthStatus.AuthStatusCancel.CancelFacebookLogin
+import progtips.vn.asia.authfirebase.AuthStatus.AuthStatusCancel.CancelGoogleLogin
+import progtips.vn.asia.authfirebase.AuthStatus.AuthStatusError.*
+import progtips.vn.asia.authfirebase.AuthStatus.AuthStatusSuccess.*
+import progtips.vn.asia.authfirebase.AuthStatus.Authenticating
 import progtips.vn.asia.authfirebase.R
 import progtips.vn.asia.authfirebase.account.toAccount
 
-class AuthManagerInitializedState(
+internal class AuthManagerInitializedState(
     private val activity: Activity,
     private val authStateChannel: ConflatedBroadcastChannel<AuthStatus>
 ): AuthManagerState {
@@ -61,23 +66,23 @@ class AuthManagerInitializedState(
             }
 
             override fun onCancel() {
-                authStateChannel.offer(AuthStatus.CancelFacebookLogin)
+                authStateChannel.offer(CancelFacebookLogin)
             }
 
             override fun onError(error: FacebookException) {
-                authStateChannel.offer(AuthStatus.ErrorFacebookLogin(error.message))
+                authStateChannel.offer(ErrorFacebookLogin(error.message))
             }
         })
     }
 
     override fun login(email: String, password: String) {
-        authStateChannel.offer(AuthStatus.Authenticating)
+        authStateChannel.offer(Authenticating)
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(activity) { task ->
                 if (task.isSuccessful) {
-                    authStateChannel.offer(AuthStatus.SuccessEmailLogin(getCurrentUser()))
+                    authStateChannel.offer(SuccessEmailLogin(getCurrentUser()))
                 } else {
-                    authStateChannel.offer(AuthStatus.ErrorEmailLogin(task.exception?.message))
+                    authStateChannel.offer(ErrorEmailLogin(task.exception?.message))
                 }
             }
     }
@@ -86,25 +91,25 @@ class AuthManagerInitializedState(
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(activity) { task ->
                 if (task.isSuccessful) {
-                    authStateChannel.offer(AuthStatus.SuccessSignUp(getCurrentUser()))
+                    authStateChannel.offer(SuccessSignUp(getCurrentUser()))
                 } else {
-                    authStateChannel.offer(AuthStatus.ErrorSignUp(resources.getString(R.string.error_signup)))
+                    authStateChannel.offer(ErrorSignUp(resources.getString(R.string.error_signup)))
                 }
             }
     }
 
     override fun logout() {
         auth.signOut()
-        authStateChannel.offer(AuthStatus.SuccessLogout)
+        authStateChannel.offer(SuccessLogout)
     }
 
     override fun loginWithGoogle(fragment: Fragment) {
-        authStateChannel.offer(AuthStatus.Authenticating)
+        authStateChannel.offer(Authenticating)
         fragment.startActivityForResult(googleSignInClient.signInIntent, RC_LOGIN_GOOGLE)
     }
 
     override fun loginWithFacebook(fragment: Fragment) {
-        authStateChannel.offer(AuthStatus.Authenticating)
+        authStateChannel.offer(Authenticating)
         LoginManager.getInstance().logInWithReadPermissions(fragment, listOf("email", "public_profile"))
     }
 
@@ -117,9 +122,9 @@ class AuthManagerInitializedState(
             .addOnCompleteListener(activity) { task ->
                 if (task.isSuccessful) {
                     googleSignInClient.signOut() // Already logged in via firebase, do not need it anymore
-                    authStateChannel.offer(AuthStatus.SuccessGoogleLogin(getCurrentUser()))
+                    authStateChannel.offer(SuccessGoogleLogin(getCurrentUser()))
                 } else {
-                    authStateChannel.offer(AuthStatus.ErrorGoogleLogIn(resources.getString(R.string.error_signin_google)))
+                    authStateChannel.offer(ErrorGoogleLogIn(resources.getString(R.string.error_signin_google)))
                 }
             }
     }
@@ -133,9 +138,9 @@ class AuthManagerInitializedState(
             .addOnCompleteListener(activity) { task ->
                 if (task.isSuccessful) {
                     LoginManager.getInstance().logOut() // Already logged in via firebase, do not need it anymore
-                    authStateChannel.offer(AuthStatus.SuccessFacebookLogin(getCurrentUser()))
+                    authStateChannel.offer(SuccessFacebookLogin(getCurrentUser()))
                 } else {
-                    authStateChannel.offer(AuthStatus.ErrorFacebookLogin(resources.getString(R.string.error_signin_facebook)))
+                    authStateChannel.offer(ErrorFacebookLogin(resources.getString(R.string.error_signin_facebook)))
                 }
             }
     }
@@ -153,10 +158,10 @@ class AuthManagerInitializedState(
                     val account = task.getResult(ApiException::class.java)
                     handleGoogleAccount(account!!)
                 } catch (e: ApiException) {
-                    authStateChannel.offer(AuthStatus.ErrorGoogleLogIn(e.message))
+                    authStateChannel.offer(ErrorGoogleLogIn(e.message))
                 }
             } else {
-                authStateChannel.offer(AuthStatus.CancelGoogleLogin)
+                authStateChannel.offer(CancelGoogleLogin)
             }
         }
     }

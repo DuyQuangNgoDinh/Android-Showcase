@@ -47,7 +47,7 @@ class LoginFragment: BaseFragment<FmLoginBinding>(R.layout.fm_login) {
             }
         }
 
-        loginViewModel.loadingLiveData.observe(viewLifecycleOwner) {
+        loginViewModel.isInProgress().observe(viewLifecycleOwner) {
             displayLoading(it)
         }
 

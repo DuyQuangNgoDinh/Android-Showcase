@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.onStart
 import progtips.vn.androidshowcase.main.auth.model.AuthState
 import progtips.vn.androidshowcase.main.auth.model.AuthState.Authenticated
 import progtips.vn.androidshowcase.main.auth.model.AuthState.Unauthenticated
+import progtips.vn.androidshowcase.utils.vmevent.Event
 import progtips.vn.asia.authfirebase.AuthStatus
 import progtips.vn.asia.authfirebase.FirebaseAuthManager
 import progtips.vn.asia.authfirebase.account.LoginMethod
@@ -23,7 +24,9 @@ class AuthRepository @Inject constructor(
         currentAuthenticationState(null)
     }
 
-    val loadingFlow = authManager.authStateFlow.map { it == AuthStatus.Authenticating }
+    val loadingFlow = authManager.authLoadingFlow
+
+    val errorFlow = authManager.authErrorFlow.map { Event(it) }
 
     fun login(email: String, password: String) {
         authManager.login(email, password)

@@ -3,7 +3,7 @@ package progtips.vn.asia.authfirebase.account
 import com.google.firebase.auth.FirebaseUser
 import progtips.vn.asia.authfirebase.AuthStatus
 
-fun FirebaseUser.toAccount(authStatus: AuthStatus? = null) = Account(
+internal fun FirebaseUser.toAccount(authStatus: AuthStatus? = null) = Account(
     uid,
     displayName,
     email,
