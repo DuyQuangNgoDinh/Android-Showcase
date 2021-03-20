@@ -22,28 +22,28 @@ class QuizRepositoryTest {
             Question(
                 "Question 1",
                 listOf(
-                    Answer("Answer 1", true),
-                    Answer("Answer 2", false),
-                    Answer("Answer 3", false),
-                    Answer("Answer 4", false)
+                    Answer("1", "Answer 1", true),
+                    Answer("2", "Answer 2", false),
+                    Answer("3", "Answer 3", false),
+                    Answer("4", "Answer 4", false)
                 )
             ),
             Question(
                 "Question 2",
                 listOf(
-                    Answer("Answer 1", true),
-                    Answer("Answer 2", false),
-                    Answer("Answer 3", false),
-                    Answer("Answer 4", false)
+                    Answer("1", "Answer 1", true),
+                    Answer("2", "Answer 2", false),
+                    Answer("3", "Answer 3", false),
+                    Answer("4", "Answer 4", false)
                 )
             ),
             Question(
                 "Question 3",
                 listOf(
-                    Answer("Answer 1", true),
-                    Answer("Answer 2", false),
-                    Answer("Answer 3", false),
-                    Answer("Answer 4", true)
+                    Answer("1", "Answer 1", true),
+                    Answer("2", "Answer 2", false),
+                    Answer("3", "Answer 3", false),
+                    Answer("4", "Answer 4", true)
                 )
             )
         )
@@ -51,5 +51,44 @@ class QuizRepositoryTest {
         val actual = quizRepository.getQuestions().first()
 
         assertThat(actual, equalTo(expected))
+    }
+
+    @Test
+    fun testCheckAnswer_success_returnThreePoint() {
+        val questions = listOf(
+            Question(
+                "Question 1",
+                listOf(
+                    Answer("1", "Answer 1", true, true),
+                    Answer("2", "Answer 2", false, false),
+                    Answer("3", "Answer 3", false, false),
+                    Answer("4", "Answer 4", false, false)
+                )
+            ),
+            Question(
+                "Question 2",
+                listOf(
+                    Answer("1", "Answer 1", false, true),
+                    Answer("2", "Answer 2", false, false),
+                    Answer("3", "Answer 3", true, false),
+                    Answer("4", "Answer 4", false, false)
+                )
+            ),
+            Question(
+                "Question 3",
+                listOf(
+                    Answer("1", "Answer 1", true, true),
+                    Answer("2", "Answer 2", false, false),
+                    Answer("3", "Answer 3", false, false),
+                    Answer("4", "Answer 4", true, true)
+                )
+            )
+        )
+
+        val actual = quizRepository.checkAnswer(questions) { answers ->
+            answers.filter { it.selected and it.correct }.size
+        }
+
+        assertThat(actual, equalTo(3))
     }
 }

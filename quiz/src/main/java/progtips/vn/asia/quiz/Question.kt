@@ -6,6 +6,8 @@ data class Question(
 )
 
 data class Answer(
+    val id: String = "",
     val answer: String = "",
+    val selected: Boolean = false,
     val correct: Boolean = false
 )

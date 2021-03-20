@@ -8,28 +8,28 @@ class FakeQuizDataSource: QuizDataSource {
             Question(
                 "Question 1",
                 listOf(
-                    Answer("Answer 1", true),
-                    Answer("Answer 2", false),
-                    Answer("Answer 3", false),
-                    Answer("Answer 4", false)
+                    Answer("1", "Answer 1", true),
+                    Answer("2", "Answer 2", false),
+                    Answer("3", "Answer 3", false),
+                    Answer("4", "Answer 4", false)
                 )
             ),
             Question(
                 "Question 2",
                 listOf(
-                    Answer("Answer 1", true),
-                    Answer("Answer 2", false),
-                    Answer("Answer 3", false),
-                    Answer("Answer 4", false)
+                    Answer("1", "Answer 1", true),
+                    Answer("2", "Answer 2", false),
+                    Answer("3", "Answer 3", false),
+                    Answer("4", "Answer 4", false)
                 )
             ),
             Question(
                 "Question 3",
                 listOf(
-                    Answer("Answer 1", true),
-                    Answer("Answer 2", false),
-                    Answer("Answer 3", false),
-                    Answer("Answer 4", true)
+                    Answer("1", "Answer 1", true),
+                    Answer("2", "Answer 2", false),
+                    Answer("3", "Answer 3", false),
+                    Answer("4", "Answer 4", true)
                 )
             )
         ))
