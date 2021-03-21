@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/screen_padding"
     android:orientation="vertical"
-    tools:context=".fragment.CatalogueFragment">
+    tools:context=".main.catalog.CatalogueFragment">
 
     <TextView
         android:layout_width="wrap_content"

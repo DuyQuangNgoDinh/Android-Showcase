@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/profileFragment">
+    app:startDestination="@id/catalogueFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -27,5 +27,14 @@
         <action
             android:id="@+id/profile_to_login"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/catalogueFragment"
+        android:name="progtips.vn.androidshowcase.main.catalog.CatalogueFragment"
+        android:label="fragment_catalogue"
+        tools:layout="@layout/fragment_catalogue" >
+        <action
+            android:id="@+id/navigateProfileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 </navigation>

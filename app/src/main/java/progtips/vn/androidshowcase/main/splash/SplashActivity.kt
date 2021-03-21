@@ -1,4 +1,4 @@
-package progtips.vn.androidshowcase.activity
+package progtips.vn.androidshowcase.main.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
