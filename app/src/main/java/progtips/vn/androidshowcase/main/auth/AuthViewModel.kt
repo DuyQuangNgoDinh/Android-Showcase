@@ -1,5 +1,6 @@
 package progtips.vn.androidshowcase.main.auth
 
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.map
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -10,7 +11,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AuthViewModel @Inject constructor(
     private val authRepository: AuthRepository
-) {
+): ViewModel() {
     val authStateLiveData = authRepository.authStateFlow.asLiveData()
 
     val isLoggedIn = authStateLiveData.map {

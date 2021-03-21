@@ -7,10 +7,9 @@ import kotlinx.coroutines.flow.onStart
 import progtips.vn.androidshowcase.main.auth.model.AuthState
 import progtips.vn.androidshowcase.main.auth.model.AuthState.Authenticated
 import progtips.vn.androidshowcase.main.auth.model.AuthState.Unauthenticated
-import progtips.vn.androidshowcase.utils.vmevent.Event
 import progtips.vn.asia.authfirebase.AuthStatus
 import progtips.vn.asia.authfirebase.FirebaseAuthManager
-import progtips.vn.asia.authfirebase.account.LoginMethod
+import progtips.vn.sharedresource.vmevent.Event
 import javax.inject.Inject
 import javax.inject.Singleton
 
