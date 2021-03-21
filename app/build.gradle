@@ -146,6 +146,10 @@ dependencies {
     implementation project(':authfirebase')
     implementation project(':sharedresource')
     implementation project(':ocr_library')
+    implementation project(':firebase_config')
+
+    implementation platform(deps.firebase_bom)
+    implementation deps.firebase_config
 
     // ViewModel & Livedata
     implementation deps.viewmodel
