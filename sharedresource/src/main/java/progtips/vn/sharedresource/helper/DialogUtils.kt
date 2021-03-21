@@ -1,8 +1,8 @@
-package progtips.vn.androidshowcase.utils.ui
+package progtips.vn.sharedresource.helper
 
 import android.app.Dialog
 import android.content.Context
-import progtips.vn.androidshowcase.R
+import progtips.vn.sharedresource.R
 
 fun Context.showProgressDialog(): Dialog {
     return Dialog(this, R.style.TransparentDialog).apply {

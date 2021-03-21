@@ -1,4 +1,4 @@
-package progtips.vn.androidshowcase.utils.vmevent
+package progtips.vn.sharedresource.vmevent
 
 import androidx.lifecycle.Observer
 

@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import progtips.vn.androidshowcase.utils.vmevent.Event
+import progtips.vn.sharedresource.vmevent.Event
 
 abstract class BaseViewModel: ViewModel() {
     protected var isInProgress = MutableLiveData<Boolean>()

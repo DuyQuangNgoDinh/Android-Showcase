@@ -5,7 +5,6 @@ android {
     compileSdkVersion build_versions.compile_sdk
 
     defaultConfig {
-        minSdkVersion 21
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         versionName "1.0"
@@ -24,12 +23,12 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation deps.kotlin_std
-    implementation deps.app_compat
     implementation deps.core_ktx
-
+    implementation deps.fragment_ktx
+    implementation deps.app_compat
     implementation deps.material
+    implementation deps.constraint_layout
 
     implementation deps.glide
     implementation deps.glide_compiler

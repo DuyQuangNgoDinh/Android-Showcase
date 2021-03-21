@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import progtips.vn.androidshowcase.utils.ui.showProgressDialog
+import progtips.vn.sharedresource.helper.showProgressDialog
 
 abstract class BaseFragment<T: ViewBinding>(@LayoutRes contentLayoutId: Int): Fragment(contentLayoutId) {
     private var _binding: T? = null

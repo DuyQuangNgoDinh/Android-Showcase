@@ -13,7 +13,7 @@ import progtips.vn.androidshowcase.BaseFragment
 import progtips.vn.androidshowcase.R
 import progtips.vn.androidshowcase.databinding.FmLoginBinding
 import progtips.vn.androidshowcase.main.auth.model.AuthState
-import progtips.vn.androidshowcase.utils.vmevent.EventObserver
+import progtips.vn.sharedresource.vmevent.EventObserver
 
 @AndroidEntryPoint
 class LoginFragment: BaseFragment<FmLoginBinding>(R.layout.fm_login) {
