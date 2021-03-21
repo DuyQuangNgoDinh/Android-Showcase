@@ -42,4 +42,12 @@ android {
 dependencies {
     implementation deps.kotlin_std
     implementation deps.core_ktx
+    implementation deps.app_compat
+    implementation deps.material
+
+    implementation deps.coroutines
+
+    testImplementation deps.junit
+    testImplementation deps.hamcrest
+    testImplementation deps.coroutines_test
 }
