@@ -59,6 +59,7 @@ class ParseUtilsTest {
         assertThat(parseData("xxxabc123xxx", Regex("""(\w{3})(\d{3})""")), equalTo("abc123"))
         assertThat(parseData("xxxabc123xxx", Regex("""(\w{3})(\d{3})"""), 1), equalTo("abc"))
         assertThat(parseData("xxxabc123xxx", Regex("""(\w{3})(\d{3})"""), 2), equalTo("123"))
+        assertThat(parseData("xxxabc123xxx", Regex("""(\w{3})(\d{3})"""), 12), equalTo(null))
     }
 
     @Test

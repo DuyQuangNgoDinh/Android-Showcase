@@ -49,7 +49,7 @@ object ParseUtils {
      */
     fun parseData(data: String, regex: Regex, groupPos: Int = 0): String? {
         return if (regex.containsMatchIn(data))
-            regex.find(data)!!.groupValues[groupPos]
+            regex.find(data)!!.groupValues.getOrNull(groupPos)
         else null
     }
 
