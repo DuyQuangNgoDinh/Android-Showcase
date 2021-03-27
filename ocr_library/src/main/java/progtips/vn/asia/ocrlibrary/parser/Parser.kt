@@ -6,7 +6,7 @@ import com.media2359.ocr.sgcardparser.ocr.TextRecognitionProcessor
 import progtips.vn.asia.ocrlibrary.parser.model.*
 import progtips.vn.asia.ocrlibrary.parser.ocr.OCRProcessorListener
 
-abstract class Parser(
+abstract class Parser<T: CardEntity>(
     context: Context,
     private val cardParserListener: CardParserListener
 ) {
@@ -21,7 +21,8 @@ abstract class Parser(
     fun parse(data: List<ScanData>) {
         totalTask = data.size
         finishedTask = 0
-        val cardEntity = CardEntity()
+        val cardEntity = initCardEntity()
+
         for (dataItem in data) {
             processor.recognizeImage(dataItem, object : OCRProcessorListener {
                 override fun onSuccess(result: OCRResult) {
@@ -48,6 +49,8 @@ abstract class Parser(
         }
     }
 
+    abstract fun initCardEntity(): T
+
     /**
      * abstract function for extracting meaning data from text
      * @param cardEntity: Card Info object to store user's data
@@ -58,9 +61,9 @@ abstract class Parser(
      */
     @Throws(Exception::class)
     protected abstract fun parse(
-        cardEntity: CardEntity,
+        cardEntity: T,
         text: String,
-        lines: List<OCRResultLine?>,
+        lines: List<OCRResultLine>,
         imageSize: ImageSize,
         type: String
     )
@@ -68,5 +71,5 @@ abstract class Parser(
     /**
      * List of images required for each type of card (e.g. Front card for IC, Back card for Work Permit, Front and Back for Armed Forces)
      */
-    abstract fun getRequiredImageList(): List<String?>?
+    abstract fun getRequiredImageList(): List<String>
 }

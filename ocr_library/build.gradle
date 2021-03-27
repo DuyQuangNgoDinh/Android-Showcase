@@ -38,5 +38,7 @@ dependencies {
     implementation deps.mlkit_text_recognition
 
     testImplementation deps.junit
+    testImplementation deps.junit_ktx
     testImplementation deps.hamcrest
+    testImplementation deps.robolectric
 }
