@@ -3,6 +3,9 @@ package progtips.vn.asia.ocrlibrary.parser
 import android.graphics.Rect
 import progtips.vn.asia.ocrlibrary.parser.model.ImageSize
 import progtips.vn.asia.ocrlibrary.parser.model.OCRResultLine
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 object ParseUtils {
     fun parseTextWithinFrame(lines: List<OCRResultLine>, rectPercentage: Rect, imageSize: ImageSize): String {
@@ -35,5 +38,27 @@ object ParseUtils {
             percentageRect.right * imageSize.width / 100,
             percentageRect.bottom * imageSize.height / 100
         )
+    }
+
+    /**
+     * Find string that matches regex and return string
+     * @param data the string to find pattern
+     * @param regex Regex object for matching
+     * @param groupPos If regex has group, return string of this group, default is 0 to get all text matched by regex
+     * @return null if not match
+     */
+    fun parseData(data: String, regex: Regex, groupPos: Int = 0): String? {
+        return if (regex.containsMatchIn(data))
+            regex.find(data)!!.groupValues[groupPos]
+        else null
+    }
+
+    fun parseDate(date: String, pattern: String): Long? {
+        val formatter = SimpleDateFormat(pattern, Locale.ROOT)
+        return try {
+            formatter.parse(date)?.time
+        } catch (e: ParseException) {
+            null
+        }
     }
 }

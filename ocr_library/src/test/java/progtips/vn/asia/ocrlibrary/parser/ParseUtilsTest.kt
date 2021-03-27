@@ -7,7 +7,9 @@ import org.hamcrest.Matchers.equalTo
 import org.junit.Test
 import org.junit.runner.RunWith
 import progtips.vn.asia.ocrlibrary.parser.ParseUtils.calculateRectOnImage
+import progtips.vn.asia.ocrlibrary.parser.ParseUtils.parseData
 import progtips.vn.asia.ocrlibrary.parser.ParseUtils.parseDataWithinFrame
+import progtips.vn.asia.ocrlibrary.parser.ParseUtils.parseDate
 import progtips.vn.asia.ocrlibrary.parser.ParseUtils.removeMultipleSpaceAndNewLine
 import progtips.vn.asia.ocrlibrary.parser.model.ImageSize
 import progtips.vn.asia.ocrlibrary.parser.model.OCRResultLine
@@ -50,5 +52,18 @@ class ParseUtilsTest {
         assertThat("example   content\n".removeMultipleSpaceAndNewLine(), equalTo("example content"))
         assertThat("example\ncontent\n".removeMultipleSpaceAndNewLine(), equalTo("example content"))
         assertThat("example\n content\n".removeMultipleSpaceAndNewLine(), equalTo("example content"))
+    }
+
+    @Test
+    fun testParseData() {
+        assertThat(parseData("xxxabc123xxx", Regex("""(\w{3})(\d{3})""")), equalTo("abc123"))
+        assertThat(parseData("xxxabc123xxx", Regex("""(\w{3})(\d{3})"""), 1), equalTo("abc"))
+        assertThat(parseData("xxxabc123xxx", Regex("""(\w{3})(\d{3})"""), 2), equalTo("123"))
+    }
+
+    @Test
+    fun testParseDate() {
+        assertThat(parseDate("27 Mar 2021", "dd MMM yyyy"), equalTo(1616778000000L))
+        assertThat(parseDate("27 Mar 2021", "MM dd yyyy"), equalTo(null))
     }
 }
