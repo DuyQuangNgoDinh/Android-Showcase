@@ -21,6 +21,7 @@ import progtips.vn.androidshowcase.main.ocr.adapter.HomeCarouselItemVH
 import progtips.vn.androidshowcase.main.ocr.model.CardType
 import progtips.vn.androidshowcase.main.ocr.model.CardTypeEntity
 import progtips.vn.androidshowcase.main.ocr.model.CitizenData
+import progtips.vn.androidshowcase.main.ocr.parser.ParserManager
 import progtips.vn.asia.ocrlibrary.parser.CardParserListener
 import progtips.vn.asia.ocrlibrary.parser.Parser
 import progtips.vn.asia.ocrlibrary.parser.model.ScanData
@@ -228,7 +229,7 @@ class ScanFragment: BaseFragment<FmScanBinding>(R.layout.fm_scan), AdapterView.O
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         (parent?.getItemAtPosition(position) as? CardTypeEntity)?.let {
-            currentParser = SGIdentityCardParser(requireContext(), listener)
+            currentParser = ParserManager.getParser(CardType.IDENTITY_CARD, requireContext(), listener)
             updateLayoutBaseOnCardType(it.type)
         }
     }

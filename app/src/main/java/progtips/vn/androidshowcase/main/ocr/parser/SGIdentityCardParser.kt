@@ -1,4 +1,4 @@
-package progtips.vn.androidshowcase.main.ocr
+package progtips.vn.androidshowcase.main.ocr.parser
 
 import android.content.Context
 import android.graphics.Rect
