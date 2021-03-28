@@ -35,7 +35,6 @@ object ParserManager {
             CardType.ARMED_FORCES -> ArmedForcesParser(context, listener)
             CardType.BIRTH_CERTIFICATE -> BirthCertParser(context, listener)
             CardType.MALAYSIA_IC -> MalaysiaICParser(context, listener)
-            else -> null
         }
     }
 }
