@@ -34,4 +34,25 @@
 
     <!-- Profile -->
     <string name="title_profile">Profile</string>
+
+    <!-- OCR Library -->
+    <string name="title_singapore_nric">Singapore NRIC</string>
+    <string name="title_work_permit">Work Permit</string>
+    <string name="title_passport">Passport</string>
+    <string name="title_driving_license">Driving License</string>
+    <string name="title_student_concession_card">MOE-issued Student Concession Card</string>
+    <string name="title_long_term_pass">Long-term Pass</string>
+    <string name="title_saf_11b">SAF 11B</string>
+    <string name="title_birth_certificate">Birth Certificate</string>
+    <string name="title_malaysia_ic">Malaysian IC</string>
+    <string name="hint_id_number">ID NO.</string>
+    <string name="hint_license_number">LICENSE NUMBER</string>
+    <string name="hint_birth_cert_number">BIRTH CERTIFICATE NO.</string>
+    <string name="hint_nationality">Nationality</string>
+    <string name="hint_passport_number">PASSPORT NO.</string>
+    <string name="hint_race">Race</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_birth_country">Country of Birth</string>
+    <string name="hint_birth_date">Day of Birth</string>
+    <string name="hint_sex">Sex</string>
 </resources>

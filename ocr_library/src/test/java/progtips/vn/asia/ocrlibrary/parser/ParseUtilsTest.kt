@@ -30,6 +30,16 @@ class ParseUtilsTest {
     }
 
     @Test
+    fun testParseDataWithinFrame_dataLinesEmpty_returnNull() {
+        val percentageRect = Rect(0, 0, 512, 384)
+        val dataLines = emptyList<OCRResultLine>()
+
+        val actual = parseDataWithinFrame(percentageRect, dataLines)
+
+        assertThat(actual, equalTo(null))
+    }
+
+    @Test
     fun testParseDataWithinFrame_success_returnData() {
         val percentageRect = Rect(0, 0, 512, 384)
         val dataLines = listOf(

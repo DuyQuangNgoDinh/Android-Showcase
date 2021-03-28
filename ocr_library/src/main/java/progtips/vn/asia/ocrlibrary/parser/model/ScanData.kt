@@ -8,6 +8,6 @@ import android.net.Uri
  * @property type: type of image (e.g. Front side/Back side of card)
  */
 data class ScanData(
-    val imageUri: Uri,
+    var imageUri: Uri? = null,
     val type: String
 )

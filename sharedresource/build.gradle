@@ -30,6 +30,11 @@ dependencies {
     implementation deps.material
     implementation deps.constraint_layout
 
+    // Glide
     implementation deps.glide
     implementation deps.glide_compiler
+
+    // Photo selection delegate
+    implementation deps.dexter
+    implementation deps.ucrop
 }

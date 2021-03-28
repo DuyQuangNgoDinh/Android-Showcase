@@ -8,20 +8,24 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 object ParseUtils {
-    fun parseTextWithinFrame(lines: List<OCRResultLine>, rectPercentage: Rect, imageSize: ImageSize): String {
+    fun parseTextWithinFrame(lines: List<OCRResultLine>, rectPercentage: Rect, imageSize: ImageSize): String? {
         val rect: Rect = calculateRectOnImage(rectPercentage, imageSize)
         return parseDataWithinFrame(rect, lines)
     }
 
-    internal fun parseDataWithinFrame(frame: Rect, lines: List<OCRResultLine>): String {
-        val data = mutableListOf<String>()
-        for (line in lines) {
-            if (frame.contains(line.boundingBox)) {
-                data.add(line.text)
+    internal fun parseDataWithinFrame(frame: Rect, lines: List<OCRResultLine>): String? {
+        return if (lines.isEmpty()) null
+        else {
+            val data = mutableListOf<String>()
+            for (line in lines) {
+                if (frame.contains(line.boundingBox)) {
+                    data.add(line.text)
+                }
             }
+
+            data.joinToString(" ")
+                .removeMultipleSpaceAndNewLine()
         }
-        return data.joinToString(" ")
-            .removeMultipleSpaceAndNewLine()
     }
 
     internal fun String.removeMultipleSpaceAndNewLine() = this.replace(Regex("\\s{2,}|\\n+"), " ").trim()

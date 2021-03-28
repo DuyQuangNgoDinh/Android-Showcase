@@ -8,7 +8,7 @@ import progtips.vn.asia.ocrlibrary.parser.ocr.OCRProcessorListener
 
 abstract class Parser<T: CardEntity>(
     context: Context,
-    private val cardParserListener: CardParserListener
+    private val cardParserListener: CardParserListener<T>
 ) {
     private var totalTask = 0
     private var finishedTask = 0

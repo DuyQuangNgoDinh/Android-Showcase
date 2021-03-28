@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- For Scan Fragment -->
+    <dimen name="home_carousel_indicator_height">50dp</dimen>
+    <dimen name="home_carousel_indicator_size">8dp</dimen>
+    <dimen name="content_padding">6dp</dimen>
 
 </resources>
