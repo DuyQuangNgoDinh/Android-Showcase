@@ -46,7 +46,8 @@
         android:layout_gravity="center_horizontal"
         android:background="@drawable/button_round_bg"
         android:backgroundTint="@android:color/holo_blue_light"
-        app:tint="@android:color/white" />
+        app:tint="@android:color/white"
+        android:src="@drawable/ic_fingerprint"/>
 
     <include layout="@layout/horizontal_line_text_middle_divider" />
 
