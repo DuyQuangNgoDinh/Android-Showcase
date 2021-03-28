@@ -27,14 +27,14 @@ object ParserManager {
     ): Parser<CitizenData>? {
         return when (type) {
             CardType.IDENTITY_CARD -> SGIdentityCardParser(context, listener)
-//            CardType.WORK_PERMIT -> WorkPassParser(context, listener)
-//            CardType.PASSPORT -> MRZCodeParser(context, listener)
-//            CardType.DRIVER_LICENSE -> DriverLicenseParser(context, listener)
-//            CardType.STUDENT_PASS -> StudentPassParser(context, listener)
-//            CardType.LONG_TERM_PASS -> LongTermPassParser(context, listener)
-//            CardType.ARMED_FORCES -> ArmedForcesParser(context, listener)
-//            CardType.BIRTH_CERTIFICATE -> BirthCertParser(context, listener)
-//            CardType.MALAYSIA_IC -> MalaysiaICParser(context, listener)
+            CardType.WORK_PERMIT -> WorkPassParser(context, listener)
+            CardType.PASSPORT -> MRZCodeParser(context, listener)
+            CardType.DRIVER_LICENSE -> DriverLicenseParser(context, listener)
+            CardType.STUDENT_PASS -> StudentPassParser(context, listener)
+            CardType.LONG_TERM_PASS -> LongTermPassParser(context, listener)
+            CardType.ARMED_FORCES -> ArmedForcesParser(context, listener)
+            CardType.BIRTH_CERTIFICATE -> BirthCertParser(context, listener)
+            CardType.MALAYSIA_IC -> MalaysiaICParser(context, listener)
             else -> null
         }
     }

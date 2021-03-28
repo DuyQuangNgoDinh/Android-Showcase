@@ -36,6 +36,7 @@
     <string name="title_profile">Profile</string>
 
     <!-- OCR Library -->
+    <string name="cannot_parse_information">Cannot parse information, try again</string>
     <string name="title_singapore_nric">Singapore NRIC</string>
     <string name="title_work_permit">Work Permit</string>
     <string name="title_passport">Passport</string>
