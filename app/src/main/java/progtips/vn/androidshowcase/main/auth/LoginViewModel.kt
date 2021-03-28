@@ -8,24 +8,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import progtips.vn.androidshowcase.content.repository.AuthRepository
-import progtips.vn.androidshowcase.main.auth.model.LoginModel
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val authRepository: AuthRepository
 ): ViewModel() {
-    private val _loginModelLiveData = MutableLiveData<LoginModel>()
-    val loginModelLiveData: LiveData<LoginModel> = _loginModelLiveData
-
     fun isInProgress() = authRepository.loadingFlow.asLiveData()
 
     fun getError() = authRepository.errorFlow.asLiveData()
 
-    private var loginModel = LoginModel()
-
-    fun loginWithEmailPassword() {
-        authRepository.login(loginModel.email, loginModel.password)
+    fun loginWithEmailPassword(email: String, password: String) {
+        authRepository.login(email, password)
     }
 
     fun loginWithGoogle(fragment: Fragment) {

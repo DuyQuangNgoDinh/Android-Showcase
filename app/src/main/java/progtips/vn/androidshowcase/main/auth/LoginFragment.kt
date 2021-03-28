@@ -37,6 +37,13 @@ class LoginFragment: BaseFragment<FmLoginBinding>(R.layout.fm_login) {
             socialLogin.btnFacebookLogin.setOnClickListener {
                 loginViewModel.loginWithFacebook(this@LoginFragment)
             }
+
+            btnSignIn.setOnClickListener {
+                loginViewModel.loginWithEmailPassword(
+                    etEmail.text.toString(),
+                    etPassword.text.toString()
+                )
+            }
         }
     }
 
