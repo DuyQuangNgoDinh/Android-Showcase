@@ -88,6 +88,7 @@ internal class AuthManagerInitializedState(
     }
 
     override fun createAccount(email: String, password: String) {
+        authStateChannel.offer(Authenticating)
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(activity) { task ->
                 if (task.isSuccessful) {
