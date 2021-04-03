@@ -14,6 +14,10 @@ class AuthViewModel @Inject constructor(
 ): ViewModel() {
     val authStateLiveData = authRepository.authStateFlow.asLiveData()
 
+    fun isInProgress() = authRepository.loadingFlow.asLiveData()
+
+    fun getError() = authRepository.errorFlow.asLiveData()
+
     val isLoggedIn = authStateLiveData.map {
         it is AuthState.Authenticated
     }

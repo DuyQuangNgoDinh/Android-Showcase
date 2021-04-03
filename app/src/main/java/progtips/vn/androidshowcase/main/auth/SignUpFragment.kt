@@ -1,5 +1,6 @@
 package progtips.vn.androidshowcase.main.auth
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,13 +15,21 @@ import progtips.vn.androidshowcase.main.auth.model.AuthState
 @AndroidEntryPoint
 class SignUpFragment: BaseFragment<FmSignupBinding>(R.layout.fm_signup) {
     private val authViewModel: AuthViewModel by viewModels()
+    private val signUpViewModel: SignUpViewModel by viewModels()
 
     override fun inflateView(inflater: LayoutInflater, container: ViewGroup?): FmSignupBinding {
         return FmSignupBinding.inflate(inflater, container, false)
     }
 
     override fun initView(view: View) {
-
+        binding.run {
+            btnSignup.setOnClickListener {
+                signUpViewModel.signUp(
+                    etEmail.text.toString(),
+                    etPassword.text.toString()
+                )
+            }
+        }
     }
 
     override fun registerObserver() {
@@ -29,5 +38,9 @@ class SignUpFragment: BaseFragment<FmSignupBinding>(R.layout.fm_signup) {
                 findNavController().popBackStack(R.id.profileFragment, false)
             }
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        signUpViewModel.onActivityResult(requestCode, resultCode, data)
     }
 }

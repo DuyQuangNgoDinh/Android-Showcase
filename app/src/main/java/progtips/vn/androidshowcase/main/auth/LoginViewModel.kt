@@ -14,10 +14,6 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val authRepository: AuthRepository
 ): ViewModel() {
-    fun isInProgress() = authRepository.loadingFlow.asLiveData()
-
-    fun getError() = authRepository.errorFlow.asLiveData()
-
     fun loginWithEmailPassword(email: String, password: String) {
         authRepository.login(email, password)
     }

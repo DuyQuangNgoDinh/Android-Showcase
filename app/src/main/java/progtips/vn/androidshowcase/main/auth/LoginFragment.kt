@@ -27,7 +27,7 @@ class LoginFragment: BaseFragment<FmLoginBinding>(R.layout.fm_login) {
     override fun initView(view: View) {
         binding.run {
             tvSignup.setOnClickListener {
-                it.findNavController().navigate(LoginFragmentDirections.loginToSignUp())
+                it.findNavController().navigate(LoginFragmentDirections.navigateSignUpFragment())
             }
 
             socialLogin.btnGoogleLogin.setOnClickListener {
@@ -54,11 +54,11 @@ class LoginFragment: BaseFragment<FmLoginBinding>(R.layout.fm_login) {
             }
         }
 
-        loginViewModel.isInProgress().observe(viewLifecycleOwner) {
+        authViewModel.isInProgress().observe(viewLifecycleOwner) {
             displayLoading(it)
         }
 
-        loginViewModel.getError().observe(viewLifecycleOwner, EventObserver {
+        authViewModel.getError().observe(viewLifecycleOwner, EventObserver {
             Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
         })
     }

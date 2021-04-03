@@ -20,10 +20,12 @@
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="label_login">Login</string>
+    <string name="label_signup">Sign Up</string>
     <string name="label_logout">Logout</string>
     <string name="label_login_google">Login with Google</string>
     <string name="label_login_facebook">Login with Facebook</string>
     <string name="link_to_signup_page">Do not have account? Sign up now.</string>
+    <string name="link_to_login_page">Already have account? Log In now.</string>
 
     <string name="enter_your_email_address">Enter your email address</string>
     <string name="enter_your_password">Your password</string>
