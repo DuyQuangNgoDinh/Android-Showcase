@@ -11,7 +11,7 @@
         android:label="LoginFragment"
         tools:layout="@layout/fm_login">
         <action
-            android:id="@+id/login_to_signUp"
+            android:id="@+id/navigateSignUpFragment"
             app:destination="@id/signUpFragment" />
     </fragment>
     <fragment

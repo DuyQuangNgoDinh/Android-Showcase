@@ -180,5 +180,6 @@ deps.compose_material = "androidx.compose.material:material:$versions.jetpack_co
 deps.compose_material_icon = "androidx.compose.material:material-icons-core:$versions.jetpack_compose"
 deps.compose_material_icon_extended = "androidx.compose.material:material-icons-extended:$versions.jetpack_compose"
 deps.compose_livedata = "androidx.compose.runtime:runtime-livedata:$versions.jetpack_compose"
+deps.compose_view_binding = "androidx.compose.ui:ui-viewbinding:$versions.jetpack_compose"
 
 ext.deps = deps

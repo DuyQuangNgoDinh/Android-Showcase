@@ -3,7 +3,7 @@ package progtips.vn.asia.authfirebase.account
 import com.google.firebase.auth.FirebaseUser
 import progtips.vn.asia.authfirebase.AuthStatus
 
-fun FirebaseUser.toAccount(authStatus: AuthStatus? = null) = Account(
+internal fun FirebaseUser.toAccount(authStatus: AuthStatus? = null) = Account(
     uid,
     displayName,
     email,
@@ -13,8 +13,8 @@ fun FirebaseUser.toAccount(authStatus: AuthStatus? = null) = Account(
 )
 
 private fun AuthStatus.toLoginMethod(): LoginMethod? = when(this) {
-    is AuthStatus.SuccessEmailLogin -> LoginMethod.Email
-    is AuthStatus.SuccessGoogleLogin -> LoginMethod.Google
-    is AuthStatus.SuccessFacebookLogin -> LoginMethod.Facebook
+    is AuthStatus.AuthStatusSuccess.SuccessEmailLogin -> LoginMethod.Email
+    is AuthStatus.AuthStatusSuccess.SuccessGoogleLogin -> LoginMethod.Google
+    is AuthStatus.AuthStatusSuccess.SuccessFacebookLogin -> LoginMethod.Facebook
     else -> null
 }

@@ -3,7 +3,7 @@ package progtips.vn.asia.authfirebase.state
 import android.content.Intent
 import androidx.fragment.app.Fragment
 
-interface AuthManagerState {
+internal interface AuthManagerState {
     fun login(email: String, password: String)
 
     fun createAccount(email: String, password: String)

@@ -13,6 +13,7 @@ import progtips.vn.androidshowcase.BaseFragment
 import progtips.vn.androidshowcase.R
 import progtips.vn.androidshowcase.databinding.FmLoginBinding
 import progtips.vn.androidshowcase.main.auth.model.AuthState
+import progtips.vn.sharedresource.helper.showToast
 import progtips.vn.sharedresource.vmevent.EventObserver
 
 @AndroidEntryPoint
@@ -27,7 +28,7 @@ class LoginFragment: BaseFragment<FmLoginBinding>(R.layout.fm_login) {
     override fun initView(view: View) {
         binding.run {
             tvSignup.setOnClickListener {
-                it.findNavController().navigate(LoginFragmentDirections.loginToSignUp())
+                it.findNavController().navigate(LoginFragmentDirections.navigateSignUpFragment())
             }
 
             socialLogin.btnGoogleLogin.setOnClickListener {
@@ -36,6 +37,13 @@ class LoginFragment: BaseFragment<FmLoginBinding>(R.layout.fm_login) {
 
             socialLogin.btnFacebookLogin.setOnClickListener {
                 loginViewModel.loginWithFacebook(this@LoginFragment)
+            }
+
+            btnSignIn.setOnClickListener {
+                loginViewModel.loginWithEmailPassword(
+                    etEmail.text.toString(),
+                    etPassword.text.toString()
+                )
             }
         }
     }
@@ -47,12 +55,12 @@ class LoginFragment: BaseFragment<FmLoginBinding>(R.layout.fm_login) {
             }
         }
 
-        loginViewModel.loadingLiveData.observe(viewLifecycleOwner) {
+        authViewModel.isInProgress().observe(viewLifecycleOwner) {
             displayLoading(it)
         }
 
-        loginViewModel.getError().observe(viewLifecycleOwner, EventObserver {
-            Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+        authViewModel.getError().observe(viewLifecycleOwner, EventObserver {
+            context?.showToast(it.message)
         })
     }
 
