@@ -34,6 +34,9 @@ class SignUpFragment: BaseFragment<FmSignupBinding>(R.layout.fm_signup) {
                 )
             }
 
+            btnGoogleLogin.setOnClickListener { signUpViewModel.loginWithGoogle(this@SignUpFragment) }
+            btnFacebookLogin.setOnClickListener { signUpViewModel.loginWithFacebook(this@SignUpFragment) }
+
             etEmail.addTextChangedListener {
                 signUpViewModel.verifyEmail(requireContext(), it?.toString())
             }

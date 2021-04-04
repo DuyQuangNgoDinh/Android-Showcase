@@ -2,6 +2,7 @@ package progtips.vn.androidshowcase.main.auth
 
 import android.content.Context
 import android.content.Intent
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -60,6 +61,14 @@ class SignUpViewModel @Inject constructor(
 
     fun signUp(email: String, password: String) {
         authRepository.signUp(email, password)
+    }
+
+    fun loginWithGoogle(fragment: Fragment) {
+        authRepository.loginWithGoogle(fragment)
+    }
+
+    fun loginWithFacebook(fragment: Fragment) {
+        authRepository.loginWithFacebook(fragment)
     }
 
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
