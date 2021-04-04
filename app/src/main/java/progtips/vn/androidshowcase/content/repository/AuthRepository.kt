@@ -9,7 +9,7 @@ import progtips.vn.androidshowcase.main.auth.model.AuthState.Authenticated
 import progtips.vn.androidshowcase.main.auth.model.AuthState.Unauthenticated
 import progtips.vn.asia.authfirebase.AuthStatus
 import progtips.vn.asia.authfirebase.FirebaseAuthManager
-import progtips.vn.asia.authfirebase.account.LoginMethod
+import progtips.vn.sharedresource.vmevent.Event
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -23,7 +23,9 @@ class AuthRepository @Inject constructor(
         currentAuthenticationState(null)
     }
 
-    val loadingFlow = authManager.authStateFlow.map { it == AuthStatus.Authenticating }
+    val loadingFlow = authManager.authLoadingFlow
+
+    val errorFlow = authManager.authErrorFlow.map { Event(it) }
 
     fun login(email: String, password: String) {
         authManager.login(email, password)
