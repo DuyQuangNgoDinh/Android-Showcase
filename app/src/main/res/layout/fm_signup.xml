@@ -76,6 +76,7 @@
         android:id="@+id/tv_signin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:text="@string/link_to_login_page"
         app:layout_constraintTop_toBottomOf="@id/btn_signup"
         android:textSize="20sp"/>
@@ -84,8 +85,8 @@
         android:id="@+id/btn_google_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Google Login"
-        app:layout_constraintTop_toBottomOf="@+id/tv_signup"
+        android:text="@string/label_login_google"
+        app:layout_constraintTop_toBottomOf="@+id/tv_signin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -93,7 +94,7 @@
         android:id="@+id/btn_facebook_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Facebook Login"
+        android:text="@string/label_login_facebook"
         app:layout_constraintTop_toBottomOf="@+id/btn_google_login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

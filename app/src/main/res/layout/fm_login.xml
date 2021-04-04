@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         style="@style/AppTheme.EditText.EmailPassword"
-        android:hint="@string/enter_your_email_address" />
+        android:hint="@string/hint_email" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -29,14 +29,14 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         style="@style/AppTheme.EditText.EmailPassword"
-        android:hint="@string/enter_your_password" />
+        android:hint="@string/hint_password" />
 
     <Button
         android:id="@+id/btnSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/AppTheme.Button"
-        android:text="@string/sign_in"/>
+        android:text="@string/label_login"/>
 
     <ImageButton
         android:id="@+id/btnFingerprintLogin"
