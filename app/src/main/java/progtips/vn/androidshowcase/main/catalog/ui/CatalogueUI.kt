@@ -27,7 +27,7 @@ fun CatalogueUI(
     catalogue: List<Catalogue>,
     onClick: (Catalogue) -> Unit
 ) {
-    LazyColumn {
+    LazyVerticalGrid(cells = GridCells.Fixed(2)) {
         items(catalogue) { item ->
             CatalogueRow(catalogue = item, onClick = onClick)
         }
