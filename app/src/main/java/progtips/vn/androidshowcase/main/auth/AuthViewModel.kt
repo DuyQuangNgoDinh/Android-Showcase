@@ -23,7 +23,7 @@ class AuthViewModel @Inject constructor(
     }
 
     val username = authStateLiveData.map {
-        if (it is AuthState.Authenticated) it.account.username
+        if (it is AuthState.Authenticated) it.account.username ?: it.account.email
         else ""
     }
 

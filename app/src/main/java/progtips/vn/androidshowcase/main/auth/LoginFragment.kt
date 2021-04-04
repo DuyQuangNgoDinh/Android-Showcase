@@ -13,6 +13,7 @@ import progtips.vn.androidshowcase.BaseFragment
 import progtips.vn.androidshowcase.R
 import progtips.vn.androidshowcase.databinding.FmLoginBinding
 import progtips.vn.androidshowcase.main.auth.model.AuthState
+import progtips.vn.sharedresource.helper.showToast
 import progtips.vn.sharedresource.vmevent.EventObserver
 
 @AndroidEntryPoint
@@ -59,7 +60,7 @@ class LoginFragment: BaseFragment<FmLoginBinding>(R.layout.fm_login) {
         }
 
         authViewModel.getError().observe(viewLifecycleOwner, EventObserver {
-            Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+            context?.showToast(it.message)
         })
     }
 

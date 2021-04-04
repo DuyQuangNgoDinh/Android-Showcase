@@ -164,6 +164,7 @@ dependencies {
     implementation deps.compose_material_icon
     implementation deps.compose_material_icon_extended
     implementation deps.compose_livedata
+    implementation deps.compose_view_binding
 
     implementation deps.retrofit_gson_converter
 

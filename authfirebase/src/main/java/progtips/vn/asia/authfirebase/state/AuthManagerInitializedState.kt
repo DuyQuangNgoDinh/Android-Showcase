@@ -94,8 +94,11 @@ internal class AuthManagerInitializedState(
                 if (task.isSuccessful) {
                     authStateChannel.offer(SuccessSignUp(getCurrentUser()))
                 } else {
-                    authStateChannel.offer(ErrorSignUp(resources.getString(R.string.error_signup)))
+                    authStateChannel.offer(ErrorSignUp(task.exception?.message))
                 }
+            }
+            .addOnFailureListener {
+                authStateChannel.offer(ErrorSignUp(it.message))
             }
     }
 
@@ -125,7 +128,7 @@ internal class AuthManagerInitializedState(
                     googleSignInClient.signOut() // Already logged in via firebase, do not need it anymore
                     authStateChannel.offer(SuccessGoogleLogin(getCurrentUser()))
                 } else {
-                    authStateChannel.offer(ErrorGoogleLogIn(resources.getString(R.string.error_signin_google)))
+                    authStateChannel.offer(ErrorGoogleLogIn(task.exception?.message))
                 }
             }
     }
@@ -141,7 +144,7 @@ internal class AuthManagerInitializedState(
                     LoginManager.getInstance().logOut() // Already logged in via firebase, do not need it anymore
                     authStateChannel.offer(SuccessFacebookLogin(getCurrentUser()))
                 } else {
-                    authStateChannel.offer(ErrorFacebookLogin(resources.getString(R.string.error_signin_facebook)))
+                    authStateChannel.offer(ErrorFacebookLogin(task.exception?.message))
                 }
             }
     }

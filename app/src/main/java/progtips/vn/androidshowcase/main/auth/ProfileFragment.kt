@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import progtips.vn.androidshowcase.main.auth.ui.ProfileUI
 import progtips.vn.androidshowcase.main.theme.AndroidShowcaseTheme
+import progtips.vn.sharedresource.helper.getAppName
 
 @AndroidEntryPoint
 class ProfileFragment: Fragment() {
@@ -37,7 +38,7 @@ class ProfileFragment: Fragment() {
     fun PassbookProfileUI() {
         val username: String? by authViewModel.username.observeAsState()
         val isLoggedIn: Boolean by authViewModel.isLoggedIn.observeAsState(false)
-        ProfileUI(username, isLoggedIn, {
+        ProfileUI(username, context?.getAppName(), isLoggedIn, {
             this@ProfileFragment.findNavController().navigate(ProfileFragmentDirections.profileToLogin())
         }, {
             authViewModel.logout()
