@@ -1,6 +1,7 @@
 package progtips.vn.sharedresource.helper
 
 import android.util.Patterns
+import progtips.vn.sharedresource.helper.ValidateUtils.ConfirmPasswordValidation.*
 import progtips.vn.sharedresource.helper.ValidateUtils.EmailValidation.*
 import progtips.vn.sharedresource.helper.ValidateUtils.PasswordValidation.*
 
@@ -30,6 +31,22 @@ object ValidateUtils {
         return when {
             password.isNullOrBlank() -> PasswordEmpty
             else -> PasswordValid
+        }
+    }
+
+    /* Confirm Password validation */
+    enum class ConfirmPasswordValidation {
+        ConfirmPasswordEmpty,
+        ConfirmPasswordNotMatch,
+        ConfirmPasswordValid
+    }
+
+    fun validateConfirmPassword(confirmPassword: String?, password: String?): ConfirmPasswordValidation {
+        return when {
+            password.isNullOrBlank() -> ConfirmPasswordValid
+            confirmPassword.isNullOrBlank() -> ConfirmPasswordEmpty
+            confirmPassword != password -> ConfirmPasswordNotMatch
+            else -> ConfirmPasswordValid
         }
     }
 }

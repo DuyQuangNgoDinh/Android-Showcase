@@ -41,6 +41,10 @@ class SignUpFragment: BaseFragment<FmSignupBinding>(R.layout.fm_signup) {
             etPassword.addTextChangedListener {
                 signUpViewModel.verifyPassword(requireContext(), it?.toString())
             }
+
+            etConfirmPassword.addTextChangedListener {
+                signUpViewModel.verifyConfirmPassword(requireContext(), it?.toString(), etPassword.text.toString())
+            }
         }
     }
 
@@ -65,6 +69,10 @@ class SignUpFragment: BaseFragment<FmSignupBinding>(R.layout.fm_signup) {
 
         signUpViewModel.validatePasswordLiveData.observe(viewLifecycleOwner) {
             binding.tilPassword.setErrorMessage(it.message)
+        }
+
+        signUpViewModel.validateConfirmPasswordLiveData.observe(viewLifecycleOwner) {
+            binding.tilConfirmPassword.setErrorMessage(it.message)
         }
     }
 

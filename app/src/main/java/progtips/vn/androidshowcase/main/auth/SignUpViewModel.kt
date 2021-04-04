@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.asFlow
 import progtips.vn.androidshowcase.R
 import progtips.vn.androidshowcase.content.repository.AuthRepository
 import progtips.vn.sharedresource.helper.ValidateUtils
+import progtips.vn.sharedresource.helper.ValidateUtils.ConfirmPasswordValidation.*
 import progtips.vn.sharedresource.helper.ValidateUtils.EmailValidation.*
 import progtips.vn.sharedresource.helper.ValidateUtils.PasswordValidation.PasswordEmpty
 import progtips.vn.sharedresource.helper.ValidateUtils.PasswordValidation.PasswordValid
@@ -24,6 +25,9 @@ class SignUpViewModel @Inject constructor(
 
     private val _validatePasswordChannel = ConflatedBroadcastChannel<Throwable>()
     val validatePasswordLiveData = _validatePasswordChannel.asFlow().asLiveData()
+
+    private val _validateConfirmPasswordChannel = ConflatedBroadcastChannel<Throwable>()
+    val validateConfirmPasswordLiveData = _validateConfirmPasswordChannel.asFlow().asLiveData()
 
     fun verifyEmail(context: Context, email: String?) {
         when(ValidateUtils.validateEmail(email)) {
@@ -41,6 +45,16 @@ class SignUpViewModel @Inject constructor(
             PasswordValid -> null
         }.also { errorMessage ->
             _validatePasswordChannel.offer(Throwable(errorMessage))
+        }
+    }
+
+    fun verifyConfirmPassword(context: Context, confirmPassword: String?, password: String?) {
+        when(ValidateUtils.validateConfirmPassword(confirmPassword, password)) {
+            ConfirmPasswordEmpty -> context.getString(R.string.error_confirm_password_empty)
+            ConfirmPasswordNotMatch -> context.getString(R.string.error_confirm_password_not_match)
+            ConfirmPasswordValid -> null
+        }?.also { errorMessage ->
+            _validateConfirmPasswordChannel.offer(Throwable(errorMessage))
         }
     }
 

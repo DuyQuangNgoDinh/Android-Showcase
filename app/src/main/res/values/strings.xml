@@ -31,6 +31,8 @@
     <string name="error_email_empty">Email cannot be empty</string>
     <string name="error_email_invalid">Invalid email</string>
     <string name="error_password_empty">Password cannot be empty</string>
+    <string name="error_confirm_password_empty">Please re-enter your password</string>
+    <string name="error_confirm_password_not_match">Re-enter password not match</string>
 
     <!-- Profile -->
     <string name="title_profile">Profile</string>
