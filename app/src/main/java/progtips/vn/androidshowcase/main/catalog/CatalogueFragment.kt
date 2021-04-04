@@ -19,6 +19,11 @@ class CatalogueFragment : Fragment() {
             R.id.navigateProfileFragment,
             "Authenticate",
             0xff9bf0e1
+        ),
+        Catalogue(
+            R.id.navigateScanFragment,
+            "OCR Library",
+            0xff9bf0e1
         )
     )
     override fun onCreateView(

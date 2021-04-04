@@ -1,5 +1,7 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
 
 android {
     compileSdkVersion build_versions.compile_sdk
@@ -7,10 +9,11 @@ android {
     defaultConfig {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
+        versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -19,22 +22,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
     implementation deps.kotlin_std
     implementation deps.core_ktx
-    implementation deps.fragment_ktx
-    implementation deps.app_compat
-    implementation deps.material
-    implementation deps.constraint_layout
 
-    // Glide
-    implementation deps.glide
-    implementation deps.glide_compiler
+    implementation deps.mlkit_text_recognition
 
-    // Photo selection delegate
-    implementation deps.dexter
-    implementation deps.ucrop
+    testImplementation deps.junit
+    testImplementation deps.junit_ktx
+    testImplementation deps.hamcrest
+    testImplementation deps.robolectric
 }

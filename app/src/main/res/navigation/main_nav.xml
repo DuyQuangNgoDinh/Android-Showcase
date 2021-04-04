@@ -36,5 +36,13 @@
         <action
             android:id="@+id/navigateProfileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/navigateScanFragment"
+            app:destination="@id/scanFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/scanFragment"
+        android:name="progtips.vn.androidshowcase.main.ocr.ScanFragment"
+        android:label="ScanFragment"
+        tools:layout="@layout/fm_scan"/>
 </navigation>
