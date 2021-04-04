@@ -28,6 +28,9 @@
     <string name="link_to_signup_page">Do not have account? Sign up now.</string>
     <string name="link_to_login_page">Already have account? Log In now.</string>
     <string name="welcome_username">Welcome %s</string>
+    <string name="error_email_empty">Email cannot be empty</string>
+    <string name="error_email_invalid">Invalid email</string>
+    <string name="error_password_empty">Password cannot be empty</string>
 
     <!-- Profile -->
     <string name="title_profile">Profile</string>

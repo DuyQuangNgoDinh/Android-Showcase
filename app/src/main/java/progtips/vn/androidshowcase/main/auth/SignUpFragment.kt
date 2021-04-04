@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -11,6 +12,7 @@ import progtips.vn.androidshowcase.BaseFragment
 import progtips.vn.androidshowcase.R
 import progtips.vn.androidshowcase.databinding.FmSignupBinding
 import progtips.vn.androidshowcase.main.auth.model.AuthState
+import progtips.vn.sharedresource.helper.setErrorMessage
 import progtips.vn.sharedresource.helper.showToast
 import progtips.vn.sharedresource.vmevent.EventObserver
 
@@ -31,6 +33,14 @@ class SignUpFragment: BaseFragment<FmSignupBinding>(R.layout.fm_signup) {
                     etPassword.text.toString()
                 )
             }
+
+            etEmail.addTextChangedListener {
+                signUpViewModel.verifyEmail(requireContext(), it?.toString())
+            }
+
+            etPassword.addTextChangedListener {
+                signUpViewModel.verifyPassword(requireContext(), it?.toString())
+            }
         }
     }
 
@@ -48,6 +58,14 @@ class SignUpFragment: BaseFragment<FmSignupBinding>(R.layout.fm_signup) {
         authViewModel.getError().observe(viewLifecycleOwner, EventObserver {
             context?.showToast(it.message)
         })
+
+        signUpViewModel.validateEmailLiveData.observe(viewLifecycleOwner) {
+            binding.tilEmail.setErrorMessage(it.message)
+        }
+
+        signUpViewModel.validatePasswordLiveData.observe(viewLifecycleOwner) {
+            binding.tilPassword.setErrorMessage(it.message)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
