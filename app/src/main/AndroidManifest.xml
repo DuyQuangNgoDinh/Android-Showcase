@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".main.welcome.WelcomeActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar.White"/>
         <activity android:name=".MainActivity" />
 
         <!-- meta data for login with Facebook -->
