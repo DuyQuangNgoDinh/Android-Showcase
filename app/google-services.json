@@ -8,18 +8,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:593116225765:android:89ca03ecbdc7ff9b27f40c",
+        "mobilesdk_app_id": "1:593116225765:android:bbbd22310be37fad27f40c",
         "android_client_info": {
           "package_name": "progtips.vn.androidshowcase"
         }
       },
       "oauth_client": [
         {
-          "client_id": "593116225765-jri1kpspod1prca0uov6472ukm8vkncd.apps.googleusercontent.com",
+          "client_id": "593116225765-h0pt7djgh6psd2s6ljqurh2j8u8vgms4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "progtips.vn.androidshowcase",
-            "certificate_hash": "db4454eba6e53db025c71dd9e7dcc06e0e95ee0b"
+            "certificate_hash": "36f9761b181b4c35191ff1c9c8f06c1f854be4e2"
           }
         },
         {
