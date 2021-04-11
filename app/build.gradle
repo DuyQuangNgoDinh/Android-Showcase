@@ -156,6 +156,7 @@ dependencies {
 
     implementation platform(deps.firebase_bom)
     implementation deps.firebase_config
+    implementation deps.firebase_firestore
 
     // ViewModel & Livedata
     implementation deps.viewmodel

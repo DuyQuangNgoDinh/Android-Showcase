@@ -159,6 +159,7 @@ deps.mlkit_text_recognition = "com.google.android.gms:play-services-mlkit-text-r
 // Firebase
 deps.firebase_bom = "com.google.firebase:firebase-bom:$versions.firebase_bom"
 deps.firebase_config = "com.google.firebase:firebase-config-ktx"
+deps.firebase_firestore = "com.google.firebase:firebase-firestore-ktx"
 
 // Firebase Auth
 deps.google_services = "com.google.gms:google-services:$versions.google_services"
