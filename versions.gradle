@@ -69,6 +69,7 @@ versions.lifecycle_version = "2.2.0"
 versions.coroutines = "1.4.1"
 
 versions.room = "2.2.5"
+versions.datastore = "1.0.0-alpha08"
 
 versions.google_ads = '19.7.0'
 
@@ -146,6 +147,9 @@ deps.coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.co
 deps.room_runtime = "androidx.room:room-runtime:$versions.room"
 deps.room_compiler = "androidx.room:room-compiler:$versions.room"
 deps.room_ktx = "androidx.room:room-ktx:$versions.room"
+
+// Data Store
+deps.datastore = "androidx.datastore:datastore-preferences:$versions.datastore"
 
 deps.paging = "androidx.paging:paging-runtime:$versions.paging"
 

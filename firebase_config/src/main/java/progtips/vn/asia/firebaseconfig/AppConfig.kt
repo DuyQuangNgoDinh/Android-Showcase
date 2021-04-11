@@ -6,11 +6,12 @@ import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 
 class AppConfig(
-    private val activity: Activity
+    private val activity: Activity,
+    private val fetchIntervalInSeconds: Long = 3600
 ) {
     private val remoteConfig = Firebase.remoteConfig
     private val configSettings = remoteConfigSettings {
-        minimumFetchIntervalInSeconds = 3600
+        minimumFetchIntervalInSeconds = fetchIntervalInSeconds
     }
 
     init {
