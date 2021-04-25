@@ -47,11 +47,4 @@ class ProfileFragment: Fragment() {
             authViewModel.logout()
         })
     }
-
-    override fun onResume() {
-        super.onResume()
-        val welcomePages = welcomeViewModel.getWelcomePages(requireActivity())
-
-        Toast.makeText(context, welcomePages[0].title, Toast.LENGTH_SHORT).show()
-    }
 }
