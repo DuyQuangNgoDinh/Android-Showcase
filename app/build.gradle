@@ -82,11 +82,17 @@ android {
             dimension "env"
             manifestPlaceholders = [applicationLabel: APP_NAME_DEV]
             versionNameSuffix "-dev"
+
+            // Firebase config fetch interval
+            buildConfigField "long", "CONFIG_FETCH_INTERVAL", "60"
         }
 
         production {
             dimension "env"
             manifestPlaceholders = [applicationLabel: APP_NAME]
+
+            // Firebase config fetch interval
+            buildConfigField "long", "CONFIG_FETCH_INTERVAL", "3600"
         }
     }
 
@@ -146,6 +152,10 @@ dependencies {
     implementation project(':authfirebase')
     implementation project(':sharedresource')
     implementation project(':ocr_library')
+    implementation project(':firebase_config')
+
+    implementation platform(deps.firebase_bom)
+    implementation deps.firebase_config
 
     // ViewModel & Livedata
     implementation deps.viewmodel
@@ -175,6 +185,9 @@ dependencies {
     // Photo selection delegate
     implementation deps.dexter
     implementation deps.ucrop
+
+    // Datastore
+    implementation deps.datastore
 
     // Testing
     testImplementation deps.junit

@@ -1,5 +1,5 @@
 <resources>
-    <style name="AppTheme.SplashScreen">
+    <style name="AppTheme.SplashScreen" parent="AppTheme.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_screen_background</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>

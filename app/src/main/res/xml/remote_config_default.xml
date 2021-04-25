@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>welcome_title_1</key>
+        <value>Default title 1</value>
+    </entry>
+    <entry>
+        <key>welcome_title_2</key>
+        <value>Default title 2</value>
+    </entry>
+    <entry>
+        <key>welcome_description_1</key>
+        <value>Default description 1</value>
+    </entry>
+    <entry>
+        <key>welcome_description_2</key>
+        <value>Default description 2</value>
+    </entry>
+</defaultsMap>
