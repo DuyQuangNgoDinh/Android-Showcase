@@ -70,6 +70,7 @@ versions.coroutines = "1.4.1"
 
 versions.room = "2.2.5"
 versions.datastore = "1.0.0-alpha08"
+versions.open_csv = "4.0"
 
 versions.google_ads = '19.7.0'
 
@@ -150,6 +151,9 @@ deps.room_ktx = "androidx.room:room-ktx:$versions.room"
 
 // Data Store
 deps.datastore = "androidx.datastore:datastore-preferences:$versions.datastore"
+
+// Open CSV
+deps.open_csv = "com.opencsv:opencsv:$versions.open_csv"
 
 deps.paging = "androidx.paging:paging-runtime:$versions.paging"
 

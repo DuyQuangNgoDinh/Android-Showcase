@@ -39,10 +39,32 @@
         <action
             android:id="@+id/navigateScanFragment"
             app:destination="@id/scanFragment" />
+        <action
+            android:id="@+id/navigateFileReaderFragment"
+            app:destination="@id/fileReaderFragment" />
     </fragment>
     <fragment
         android:id="@+id/scanFragment"
         android:name="progtips.vn.androidshowcase.main.ocr.ScanFragment"
         android:label="ScanFragment"
         tools:layout="@layout/fm_scan"/>
+    <fragment
+        android:id="@+id/fileReaderFragment"
+        android:name="progtips.vn.androidshowcase.main.file.FileReaderFragment"
+        android:label="FileReaderFragment" >
+        <action
+            android:id="@+id/navigateInternalReaderFragment"
+            app:destination="@id/internalReaderFragment" />
+        <action
+            android:id="@+id/navigateCSVReaderFragment"
+            app:destination="@id/CSVReaderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/internalReaderFragment"
+        android:name="progtips.vn.androidshowcase.main.file.internal.InternalReaderFragment"
+        android:label="InternalReaderFragment" />
+    <fragment
+        android:id="@+id/CSVReaderFragment"
+        android:name="progtips.vn.androidshowcase.main.file.csv.CSVReaderFragment"
+        android:label="CSVReaderFragment" />
 </navigation>

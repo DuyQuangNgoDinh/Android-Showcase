@@ -1,4 +1,4 @@
-package progtips.vn.androidshowcase.main.catalog
+package progtips.vn.androidshowcase.main.file
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,28 +9,25 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import progtips.vn.androidshowcase.R
+import progtips.vn.androidshowcase.main.catalog.Catalogue
 import progtips.vn.androidshowcase.main.catalog.ui.CatalogueUI
 import progtips.vn.androidshowcase.main.theme.AndroidShowcaseTheme
 
-@ExperimentalFoundationApi
-class CatalogueFragment : Fragment() {
+class FileReaderFragment: Fragment() {
     private val catalogue = listOf(
         Catalogue(
-            R.id.navigateProfileFragment,
-            "Authenticate",
+            R.id.navigateCSVReaderFragment,
+            "CSVFileReader",
             0xff9bf0e1
         ),
         Catalogue(
-            R.id.navigateScanFragment,
-            "OCR Library",
-            0xff9bf0e1
-        ),
-        Catalogue(
-            R.id.navigateFileReaderFragment,
-            "File Reader",
+            R.id.navigateInternalReaderFragment,
+            "Internal Storage",
             0xff9bf0e1
         )
     )
+
+    @ExperimentalFoundationApi
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
