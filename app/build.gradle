@@ -191,6 +191,9 @@ dependencies {
     // Datastore
     implementation deps.datastore
 
+    // TrandingView
+    implementation 'com.tradingview:lightweightcharts:3.3.1'
+
     // Testing
     testImplementation deps.junit
     testImplementation deps.junit_ktx
